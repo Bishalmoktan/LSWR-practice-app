@@ -9,7 +9,7 @@ const QuestionSection = () => {
   return (
     <div className="border-l flex-1 pt-8 bg-customSkyBlue px-6">
       <div className="flex items-center gap-2 mb-4">
-        <Info className="mb-7" />
+        <Info  />
         <h3>{question}</h3>
       </div>
 

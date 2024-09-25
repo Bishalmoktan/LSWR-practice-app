@@ -29,7 +29,7 @@ const AudioSection = () => {
   return (
     <div className="flex-1 py-8 px-6">
       <div className="flex items-center gap-2 mb-4">
-        <Info className="mb-7" />
+        <Info />
         <h3>Listen to a short statement. You will hear it only once.</h3>
       </div>
 
