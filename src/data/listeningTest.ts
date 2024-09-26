@@ -1,4 +1,9 @@
 import { ListeningTestData } from "@/types/types";
+import op1 from "../assets/listening/q1-o1.png";
+import op2 from "../assets/listening/q1-o2.png";
+import op3 from "../assets/listening/q1-o3.png";
+import op4 from "../assets/listening/q1-o4.png";
+import manwoman from "../assets/listening/man-woman.png"
 
 const listeningTestMockData : ListeningTestData  = {
   testName: "Practice Test A - Listening Test",
@@ -46,7 +51,7 @@ const listeningTestMockData : ListeningTestData  = {
         "https://instructionalproducts.paragontesting.ca/InstructionalProducts/Areas/FreeOnlineSampleTest/Content/audio/NL1_Instructions.mp3",
       subInstruction:
         "You will hear a conversation between a woman and a man. The man is a bus driver and the woman is a passenger trying to get somewhere.",
-        subInstructionImg: "/src/assets/listening/man-woman.png",
+        subInstructionImg: manwoman,
       sections: [
         {
           sectionNumber: 1,
@@ -60,10 +65,10 @@ const listeningTestMockData : ListeningTestData  = {
               audioInfo: "Listen to the question. You will hear it only once.",
               audioUrl: "https://instructionalproducts.paragontesting.ca/InstructionalProducts/Areas/FreeOnlineSampleTest/Content/audio/nl1_q1_playground.ogg",
               options: [
-                { type: "image", value: "/src/assets/listening/q1-o1.png" },
-                { type: "image", value: "/src/assets/listening/q1-o2.png" },
-                { type: "image", value: "/src/assets/listening/q1-o3.png" },
-                { type: "image", value: "/src/assets/listening/q1-o4.png" },
+                { type: "image", value: op1 },
+                { type: "image", value: op2 },
+                { type: "image", value: op3 },
+                { type: "image", value: op4 },
               ],
               correctAnswer: 0,
             },
