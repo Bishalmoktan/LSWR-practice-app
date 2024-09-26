@@ -5,7 +5,10 @@ import ListeningPage from "./pages/listening/listening";
 import ListeningPart from "./pages/listening/components/listening-part";
 import VideoInstruction from "./pages/listening/components/video-instruction";
 import DemoTest from "./pages/listening/components/demo-test";
-// Import other sections if needed (e.g., ReadingSection, WritingSection, SpeakingSection)
+import Instructions from "./pages/listening/components/instruction";
+import AudioPlayingPage from "./pages/listening/components/audio-playing-page";
+import QuestionPage from "./pages/listening/components/question-page";
+import Preparation from "./pages/listening/components/preparation";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +34,22 @@ const router = createBrowserRouter([
       {
         path: "/listening/:partNumber",
         element: <ListeningPart />,
+      },
+      {
+        path: "/listening/:partNumber/instruction",
+        element: <Instructions />,
+      },
+      {
+        path: "/listening/:partNumber/audio/:sectionNumber",
+        element: <AudioPlayingPage />,
+      },
+      {
+        path: "/listening/:partNumber/section/:sectionNumber/preparation",
+        element: <Preparation />,
+      },
+      {
+        path: "/listening/:partNumber/section/:sectionNumber/question/:questionNumber",
+        element: <QuestionPage />,
       },
       // Uncomment and add other routes as needed
       // {

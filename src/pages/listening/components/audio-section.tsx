@@ -1,22 +1,29 @@
 import { Info, Volume2 } from "lucide-react";
-import { useState, useRef } from "react";
+import { useState, useRef, SetStateAction } from "react";
 import { Progress } from "@/components/ui/progress";
-import listeningTestMockData from "@/data/listeningTest";
 
-const AudioSection = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
+interface AudioSectionProps {
+  setEnableNext?: React.Dispatch<SetStateAction<boolean>>;
+  audioUrl: string;
+  audioInfo: string;
+}
+
+const AudioSection = ({
+  setEnableNext,
+  audioInfo,
+  audioUrl
+} : AudioSectionProps) => {
+  const [isCompleted, setIsCompleted] = useState(false);
   const [progress, setProgress] = useState(0);
   const audioRef = useRef(null);
 
-  const audioUrl = listeningTestMockData.demoTest.audioUrl;
 
-  const handlePlay = () => {
-    setIsPlaying(true);
+
+const handlePlay = () => {
+    setIsCompleted(false);
   };
 
-  const handlePause = () => {
-    setIsPlaying(false);
-  };
+  
 
   const handleTimeUpdate = () => {
     if (audioRef.current) {
@@ -26,23 +33,33 @@ const AudioSection = () => {
     }
   };
 
+  const handleEnd = () => {
+    setIsCompleted(true);
+    if(setEnableNext){
+      setEnableNext(true);
+    }
+  }
+
+  
+
   return (
-    <div className="flex-1 py-8 px-6">
-      <div className="flex items-center gap-2 mb-4">
-        <Info />
-        <h3>Listen to a short statement. You will hear it only once.</h3>
+    <div className="flex-1 py-4 px-6 bg-gray-50 min-h-[75vh]">
+      <div className="flex items-start gap-2 mb-4 tracking-tight text-customLightBlue">
+        <Info className="self-start " />
+        <h3 className="leading-tight">{audioInfo || "Listen to a short statement. You will hear it only once."}</h3>
       </div>
+
 
       <div className="py-2">
         <div className="mx-auto bg-customGray py-6 px-10 rounded-md flex items-center justify-between w-fit gap-8">
           <div className="bg-white p-2 rounded-sm">
-            {isPlaying ? <Volume2 /> : <Info />}
+            {!isCompleted ? <Volume2 /> : <Info />}
           </div>
           <div className="flex flex-col justify-center items-center">
             <span>
-              {isPlaying ? "Playing..." : `Click "NEXT" to continue.`}
+              {!isCompleted ? "Playing..." : `Click "NEXT" to continue.`}
             </span>
-            {isPlaying && (
+            {!isCompleted && (
               <Progress
                 value={progress}
                 className="w-[200px] bg-white rounded-none h-4 mt-2"
@@ -59,8 +76,8 @@ const AudioSection = () => {
         src={audioUrl}
         className="w-[400px] mb-4 mx-auto"
         onPlay={handlePlay}
-        onPause={handlePause}
         onTimeUpdate={handleTimeUpdate} 
+        onEnded={handleEnd}
       />
     </div>
   );

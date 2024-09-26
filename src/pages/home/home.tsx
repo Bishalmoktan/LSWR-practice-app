@@ -5,13 +5,13 @@ import DropDown from "./components/dropdown";
 export default function Home() {
   return (
     <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <Card className="bg-white shadow overflow-hidden rounded-none">
-        <CardHeader className="bg-gray-200 px-4 py-2 font-semibold text-gray-600">
+      <Card className="bg-white shadow overflow-hidden rounded-none border border-gray-300 mx-auto max-w-4xl">
+        <CardHeader className="bg-gray-200 px-4 py-2 font-normal text-gray-600 border-b border-gray-300">
           Practice Test A
         </CardHeader>
-        <CardContent>
+        <CardContent className="min-h-[80vh]">
         <div className="p-6 space-y-4 text-gray-600 text-sm">
-          <ol className="list-decimal list-inside space-y-4">
+          <ol className="list-decimal list-inside space-y-4 mb-16">
             <li>
               You should give yourself 2 hours and 39 minutes to complete
               CELPIP-General Practice Test A. Press Start and select Complete
@@ -71,7 +71,7 @@ export default function Home() {
           </div>
         </div>
         </CardContent>
-      <CardFooter className="h-8 bg-customGray">
+      <CardFooter className="h-8 bg-customGray border-t border-gray-300">
 
       </CardFooter>
       </Card>
