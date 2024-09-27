@@ -9,7 +9,7 @@ import {
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
-interface ListeningCardLayoutProps {
+interface ReadingPageLayoutProps {
   title: string; 
   nextLink?: string; 
   prevLink?: string; 
@@ -19,7 +19,7 @@ interface ListeningCardLayoutProps {
   enableNext?: boolean
 }
 
-export default function ListeningCardLayout({
+export default function ReadingPageLayout({
   title,
   nextLink,
   prevLink,
@@ -27,7 +27,7 @@ export default function ListeningCardLayout({
   children,
   enableNext = true,
   timer
-}: ListeningCardLayoutProps) {
+}: ReadingPageLayoutProps) {
   const displayTimer = () => {
     if(timer){
       if (timer > 60) {

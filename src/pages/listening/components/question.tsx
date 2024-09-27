@@ -1,7 +1,7 @@
+import CardLayout from "@/components/card-layout";
 import AudioSection from "./audio-section";
 import QuestionSection from "./question-section";
 import { useEffect, useState } from "react";
-import ListeningCardLayout from "./listening-page-layout";
 import { useLocation } from "react-router-dom";
 
 export interface IOption {
@@ -54,7 +54,7 @@ const Question = ({
 
   return (
     
-        <ListeningCardLayout
+        <CardLayout
         title={title}
         nextLink={nextLink}
         prevLink={prevLink}
@@ -78,7 +78,7 @@ const Question = ({
         
 
 
-        </ListeningCardLayout>
+        </CardLayout>
 
         
   );

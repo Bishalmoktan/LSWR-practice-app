@@ -17,6 +17,7 @@ export default {
         customDarkRed: "#791222",
         customGold: "#B2A368",
         customGray: "#E2E3E8",
+        customLighGray: "#F5F5F5",
         customBlue: "#027DCC",
         customDarkBlue: "#0044CB",
         customLightBlue: "#19578A",

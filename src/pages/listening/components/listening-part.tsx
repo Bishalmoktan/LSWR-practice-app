@@ -1,6 +1,6 @@
+import CardLayout from "@/components/card-layout";
 import listeningTestMockData from "@/data/listeningTest";
 import { Navigate, useParams } from "react-router-dom";
-import ListeningCardLayout from "./listening-page-layout";
 import { toast } from "sonner";
 
 export default function ListeningPart() {
@@ -14,7 +14,7 @@ export default function ListeningPart() {
 const part = listeningTestMockData.parts[parseInt(partNumber!) - 1];
 
   return (
-    <ListeningCardLayout
+    <CardLayout
       title={part.title}
       nextLink={`/listening/${partNumber}/instruction`}
       prevLink={`/listening/demo-test`}
@@ -36,6 +36,6 @@ const part = listeningTestMockData.parts[parseInt(partNumber!) - 1];
 
         <audio src={part.audioUrl} autoPlay className=""></audio>
       </div>
-    </ListeningCardLayout>
+    </CardLayout>
   );
 }

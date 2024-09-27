@@ -1,8 +1,8 @@
 import listeningTestMockData from "@/data/listeningTest";
 import { useParams } from "react-router-dom";
 import AudioSection from "./audio-section";
-import ListeningCardLayout from "./listening-page-layout";
 import { Info } from "lucide-react";
+import CardLayout from "@/components/card-layout";
 
 const AudioPlayingPage = () => {
   const { partNumber, sectionNumber } = useParams();
@@ -11,7 +11,7 @@ const AudioPlayingPage = () => {
   const section = part.sections[parseInt(sectionNumber!) - 1];
 
   return (
-    <ListeningCardLayout
+    <CardLayout
       title={section.title}
       nextLink={`/listening/${partNumber}/section/${sectionNumber}/question/${1}`}
       prevLink={`/listening/${partNumber}`}
@@ -41,7 +41,7 @@ const AudioPlayingPage = () => {
           />
         )}
       </div>
-    </ListeningCardLayout>
+    </CardLayout>
   );
 };
 export default AudioPlayingPage;

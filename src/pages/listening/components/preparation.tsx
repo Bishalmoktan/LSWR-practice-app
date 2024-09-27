@@ -1,8 +1,8 @@
 import listeningTestMockData from "@/data/listeningTest";
-import ListeningCardLayout from "./listening-page-layout"
 import { useNavigate, useParams } from "react-router-dom";
 import { Clock, Info } from "lucide-react";
 import { useEffect, useState } from "react";
+import CardLayout from "@/components/card-layout";
 
 const Preparation = () => {
     const [timer, setTimer] = useState(10);
@@ -31,7 +31,7 @@ const Preparation = () => {
     
   
   return (
-    <ListeningCardLayout
+    <CardLayout
     title={section.title}
     nextLink={next}
     prevLink={prev}
@@ -49,7 +49,7 @@ const Preparation = () => {
           </div>
         </div>
         </div>
-    </ListeningCardLayout>
+    </CardLayout>
   )
 }
 export default Preparation

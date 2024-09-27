@@ -1,13 +1,13 @@
+import CardLayout from "@/components/card-layout";
 import listeningTestMockData from "@/data/listeningTest";
 import { Info } from "lucide-react";
 import {  useParams } from "react-router-dom";
-import ListeningCardLayout from "./listening-page-layout";
 
 const Instructions = () => {
   const { partNumber } = useParams();
   const part = listeningTestMockData.parts[parseInt(partNumber!) - 1];
   return (
-    <ListeningCardLayout
+    <CardLayout
       title={part.title}
       nextLink={`/listening/${partNumber}/audio/1`}
       prevLink={`/listening/${partNumber}`}
@@ -32,7 +32,7 @@ const Instructions = () => {
 
 </div>
 
-    </ListeningCardLayout>
+    </CardLayout>
   );
 };
 export default Instructions;

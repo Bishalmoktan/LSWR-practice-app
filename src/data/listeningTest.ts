@@ -1,4 +1,4 @@
-import { ListeningTestData } from "@/types/types";
+import { ListeningTestData } from "@/types/listening";
 import op1 from "../assets/listening/q1-o1.png";
 import op2 from "../assets/listening/q1-o2.png";
 import op3 from "../assets/listening/q1-o3.png";

@@ -43,7 +43,7 @@ const handlePlay = () => {
   
 
   return (
-    <div className="flex-1 py-4 px-6 bg-gray-50 min-h-[75vh]">
+    <div className="flex-1 py-4 px-6 bg-customLighGray min-h-[75vh]">
       <div className="flex items-start gap-2 mb-4 tracking-tight text-customLightBlue">
         <Info className="self-start " />
         <h3 className="leading-tight">{audioInfo || "Listen to a short statement. You will hear it only once."}</h3>

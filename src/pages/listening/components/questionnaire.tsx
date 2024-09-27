@@ -2,7 +2,7 @@ import { Info } from 'lucide-react';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useParams } from 'react-router-dom';
 import listeningTestMockData from '@/data/listeningTest';
-import ListeningCardLayout from './listening-page-layout';
+import CardLayout from '@/components/card-layout';
 
 interface QuestionnaireComponentProps {
   time: number;
@@ -24,7 +24,7 @@ const QuestionnaireComponent = ({
   
 
   return (
-    <ListeningCardLayout
+    <CardLayout
     title={title}
     enableNext={true}
     timer={time}
@@ -58,7 +58,7 @@ const QuestionnaireComponent = ({
         ))}
       </ol>
     </div>
-    </ListeningCardLayout>
+    </CardLayout>
 
   );
 };
