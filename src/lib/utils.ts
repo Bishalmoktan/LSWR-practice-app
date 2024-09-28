@@ -1,5 +1,6 @@
 import listeningTestMockData from "@/data/listeningTest";
 import { readingTestMockData } from "@/data/readingTest";
+import { speakingTestData } from "@/data/speakingTest";
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
 
@@ -45,6 +46,22 @@ export function getNextExerciseId(currentExerciseId: string): string | null {
     currentExerciseIndex < readingTestMockData.exercise.length - 1
   ) {
     return readingTestMockData.exercise[currentExerciseIndex + 1].id;
+  }
+
+  return null;
+}
+
+
+export function getNextSpeakingExerciseId(currentExerciseId: string): string | null {
+  const currentExerciseIndex = speakingTestData.exercise.findIndex(
+    (exercise) => exercise.id === currentExerciseId
+  );
+
+  if (
+    currentExerciseIndex !== -1 &&
+    currentExerciseIndex < speakingTestData.exercise.length - 1
+  ) {
+    return speakingTestData.exercise[currentExerciseIndex + 1].id;
   }
 
   return null;

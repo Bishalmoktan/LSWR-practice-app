@@ -6,7 +6,7 @@ import {
   CardFooter,
   CardHeader,
 } from "@/components/ui/card";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
 interface CardLayout {
@@ -17,6 +17,7 @@ interface CardLayout {
   children: ReactNode; 
   timer?: number,
   enableNext?: boolean
+  recordingTime?: number;
 }
 
 export default function CardLayout({
@@ -26,32 +27,43 @@ export default function CardLayout({
   isPrevDisabled = false, 
   children,
   enableNext = true,
-  timer
+  timer,
+  recordingTime
 }: CardLayout) {
   
-  const displayTimer = () => {
-    if(timer){
-      if (timer > 60) {
-        return `${Math.floor(timer / 60)} minute${Math.floor(timer / 60) > 1 ? 's' : ''}`;
-      } else if (timer > 0) {
-        return `${timer} second${timer > 1 ? 's' : ''}`;
+  const displayTimer = (time: number) => {
+    if(time){
+      if (time > 60) {
+        return `${Math.floor(time / 60)} minute${Math.floor(time / 60) > 1 ? 's' : ''}`;
+      } else if (time > 0) {
+        return `${timer} second${time > 1 ? 's' : ''}`;
       }
       } else {
         return 'None';
       }
   };
+  const location = useLocation(); 
+  const showTime = location.pathname.includes("speaking") ? "Prepartion: " : "Remaining time ";
   return (
     <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <Card className="bg-white shadow overflow-hidden rounded-none border border-gray-300 mx-auto max-w-4xl">
+      <Card className="bg-white shadow overflow-hidden rounded-none border border-gray-300 mx-auto max-w-5xl">
         <CardHeader className="flex flex-row justify-between bg-gray-200 py-2 border-gray-300 border-b">
           <h2 className="text-gray-600">{title}</h2>
           <div className="flex gap-4 text-sm relative">
-           {timer !== undefined && <p className="absolute right-12 top-0 w-[200px]">
-              Time remaining:{" "}
+           {recordingTime !== undefined && <p className="absolute right-44 top-0 w-[180px]">
+              Recording:{" "}
+              <span className={cn("text-red-600", recordingTime
+                 >= 60 && "text-gray-700 font-medium"
+              )}>
+                {displayTimer(recordingTime)}
+              </span>
+            </p>}
+           {timer !== undefined && <p className={cn("absolute right-12 top-0 w-[180px]", location.pathname.includes("speaking") && "w-[150px]")}>
+              {showTime}
               <span className={cn("text-red-600", timer
                  >= 60 && "text-gray-700 font-medium"
               )}>
-                {displayTimer()}
+                {displayTimer(timer)}
               </span>
             </p>}
             {enableNext && (
