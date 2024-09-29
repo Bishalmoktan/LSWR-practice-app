@@ -20,6 +20,10 @@ import SpeakingDemoTest from "./pages/speaking/speaking-demo-test";
 import SpeakingExercise from "./pages/speaking/speaking-exercise";
 import SpeakingInstructions from "./pages/speaking/speaking-instruction";
 import { completeTestData } from "./data/completeTest";
+import EndPage from "./components/end-page";
+import AnswerKeyPage from "./pages/listening/components/listening-answer-key";
+import ListeningResult from "./pages/listening/components/listening-result";
+import ReadingAnswerKey from "./pages/reading/components/reading-answer-key";
 
 const router = createBrowserRouter([
   {
@@ -76,6 +80,32 @@ const router = createBrowserRouter([
         path: "/listening/:partNumber/section/:sectionNumber/question/:questionNumber",
         element: <QuestionPage />,
       },
+      {
+        path: "/listening/answer-key",
+        element: <AnswerKeyPage
+          data={listeningTestMockData}
+          title="Practice Test A - Listening Answer Key"
+          nextLink="/listening/result"
+        />
+      },
+      {
+        path: "/listening/result",
+        element: <ListeningResult
+          // data={listeningTestMockData}
+          // title="Practice Test A - Listening Answer Key"
+          // nextLink="/listening/result"
+        />
+      },
+      {
+        path: "/listening/end-page",
+        element: <EndPage
+          title={listeningTestMockData.endPage.title}
+          instructions={listeningTestMockData.endPage.instruction}
+          nextLink="/reading"
+          prevLink="/listening"
+        />,
+      },
+      
 
 
       // reading
@@ -107,6 +137,31 @@ const router = createBrowserRouter([
         path: "/reading/:exerciseId",
         element: <ReadingExercise />,
       },
+      {
+        path: "/reading/end-page",
+        element: <EndPage
+          title={readingTestMockData.endPage.title}
+          instructions={readingTestMockData.endPage.instruction}
+          nextLink="/writing"
+          prevLink="/listening"
+        />,
+      },
+      {
+        path: "/reading/answer-key",
+        element: <ReadingAnswerKey
+          data={readingTestMockData}
+          title="Practice Test A - Reading Answer Key"
+          nextLink="/reading/result"
+        />
+      },
+      {
+        path: "/reading/result",
+        element: <ListeningResult
+          // data={listeningTestMockData}
+          // title="Practice Test A - Listening Answer Key"
+          // nextLink="/listening/result"
+        />
+      },
 
       
 
@@ -134,6 +189,15 @@ const router = createBrowserRouter([
       {
         path: "/writing/:exerciseId",
         element: <WritingExercise />,
+      },
+      {
+        path: "/writing/end-page",
+        element: <EndPage
+          title={writingTestMockData.endPage.title}
+          instructions={writingTestMockData.endPage.instruction}
+          nextLink="/speaking"
+          prevLink="/writing"
+        />,
       },
 
 
@@ -171,6 +235,15 @@ const router = createBrowserRouter([
         path: "/speaking/:exerciseId/instruction",
         element: <SpeakingInstructions />,
       },
+      {
+        path: "/speaking/end-page",
+        element: <EndPage
+          title={speakingTestData.endPage.title}
+          instructions={speakingTestData.endPage.instruction}
+          nextLink="/"
+          prevLink="/writing"
+        />,
+      },
 
       // complete
       {
@@ -188,6 +261,7 @@ const router = createBrowserRouter([
 
 export default function App() {
   return (
+    
     <RouterProvider router={router} />
   );
 }

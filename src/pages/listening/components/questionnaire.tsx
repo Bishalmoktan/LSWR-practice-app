@@ -3,6 +3,9 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { useParams } from 'react-router-dom';
 import listeningTestMockData from '@/data/listeningTest';
 import CardLayout from '@/components/card-layout';
+import { getFlattenedQuestionIndex } from '@/lib/utils';
+import { useListeningContext } from '@/context/ListeningContext';
+import { Option } from '@/types/listening';
 
 interface QuestionnaireComponentProps {
   time: number;
@@ -21,6 +24,22 @@ const QuestionnaireComponent = ({
     const part = listeningTestMockData.parts[parseInt(partNumber!) - 1];
     const section = part.sections[parseInt(sectionNumber!) - 1];
 
+    const { setUserAnswer } = useListeningContext();
+
+    const handleChange = (value: string, questionNumber: number, options : Option[]) => {
+      const questionIndex = getFlattenedQuestionIndex(listeningTestMockData, 
+        parseInt(partNumber!),
+        parseInt(sectionNumber!),
+        questionNumber
+      )
+
+    const selectedIndex = options.findIndex(option => option.value === value);
+
+
+      
+      setUserAnswer(questionIndex || -1, selectedIndex)
+      
+    }
   
 
   return (
@@ -43,7 +62,7 @@ const QuestionnaireComponent = ({
           <li key={index} className="flex items-center gap-2 text-gray-600 text-sm">
             <span className="">{index + 1}.</span>
             <span className="">{question.questionText}</span>
-            <Select>
+            <Select onValueChange={(value) => handleChange(value, index + 1, question.options)}>
               <SelectTrigger className="min-w-20 w-fit rounded-none border-none bg-white font-semibold text-xl focus:outline-none focus:ring-0">
                 <SelectValue placeholder=""  />
               </SelectTrigger>

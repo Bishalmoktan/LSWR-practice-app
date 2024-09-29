@@ -1,6 +1,7 @@
 import listeningTestMockData from "@/data/listeningTest";
 import { readingTestMockData } from "@/data/readingTest";
 import { speakingTestData } from "@/data/speakingTest";
+import { ListeningTestData } from "@/types/listening";
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
 
@@ -66,3 +67,26 @@ export function getNextSpeakingExerciseId(currentExerciseId: string): string | n
 
   return null;
 }
+
+
+export const getFlattenedQuestions = (data: ListeningTestData) => {
+  return data.parts.flatMap(part =>
+    part.sections.flatMap(section =>
+      section.questions.map((question, index) => ({
+        question,
+        partNumber: part.partNumber,
+        sectionNumber: section.sectionNumber,
+        questionNumber: index + 1, 
+      }))
+    )
+  );
+};
+
+export const getFlattenedQuestionIndex = (data: ListeningTestData, partNumber: number, sectionNumber: number, questionNumber: number) => {
+  const flattenedQuestions = getFlattenedQuestions(data);
+  const index = flattenedQuestions.findIndex(
+    q => q.partNumber === partNumber && q.sectionNumber === sectionNumber && q.questionNumber === questionNumber
+  );
+
+  return index !== -1 ? index + 1 : null; 
+};

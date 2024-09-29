@@ -8,6 +8,7 @@ import bus from "../assets/reading/bus.png";
 
 export const readingTestMockData: ReadingTestData = {
   testName: "Practice Test A - Reading Test",
+  hasAnswerKey: true,
   mainInstruction: [
     "On the official test, once you leave a page, you cannot go back to it to change your answers. However, in this sample test, you can.",
     "Watch the timer in the top right corner to make sure that you complete the Reading Test before the time is up. For more information on test format, click here.",
@@ -37,10 +38,13 @@ export const readingTestMockData: ReadingTestData = {
               "British Columbia",
               "Nova Scotia",
             ],
+            correctAnswer: 0
           },
         ],
       },
+      
     ],
+    
   },
   exercise: [
     {
@@ -70,6 +74,7 @@ Maria`,
           id: uuidv4(),
           text: "Maria's mother is now",
           options: ["in Vancouver", "in Victoria", "in Chile", "not mentioned"],
+          correctAnswer: 0
         },
         {
           id: uuidv4(),
@@ -80,11 +85,13 @@ Maria`,
             "visit Disneyland",
             "get married",
           ],
+          correctAnswer: 0
         },
         {
           id: uuidv4(),
           text: "Marco is feeling",
           options: ["apprehensive", "excited", "sad", "indifferent"],
+          correctAnswer: 0
         },
         {
           id: uuidv4(),
@@ -95,6 +102,7 @@ Maria`,
             "offering a low salary",
             "not mentioned",
           ],
+          correctAnswer: 0
         },
         {
           id: uuidv4(),
@@ -105,6 +113,7 @@ Maria`,
             "the cost of living in Tokyo",
             "Marco's language skills",
           ],
+          correctAnswer: 0
         },
         {
           id: uuidv4(),
@@ -115,6 +124,7 @@ Maria`,
             "work together",
             "live in the same city",
           ],
+          correctAnswer: 0
         },
       ],
       fillInTheBlankQuestion: {
@@ -133,9 +143,11 @@ Mea`,
           {
             id: 7,
             options: ["the party", "Marco's farewell", "the graduation"],
+            correctAnswer: 0
           },
-          { id: 8, options: ["Calgary", "Vancouver", "Victoria"] },
-          { id: 9, options: ["party", "decorations", "apartment"] },
+          { id: 8, options: ["Calgary", "Vancouver", "Victoria"], correctAnswer: 0 },
+          { id: 9, options: ["party", "decorations", "apartment"], correctAnswer: 0 },
+          
           {
             id: 10,
             options: [
@@ -143,8 +155,9 @@ Mea`,
               "is too expensive",
               "isn't practical",
             ],
+            correctAnswer: 0
           },
-          { id: 11, options: ["job", "move", "winter"] },
+          { id: 11, options: ["job", "move", "winter"], correctAnswer: 0 },
         ],
       },
     },
@@ -210,6 +223,7 @@ Mea`,
             "are neighbours.",
             "live together.",
           ],
+          correctAnswer: 0,
           text: "Peter and Janice",
         },
         {
@@ -220,11 +234,13 @@ Mea`,
             "to speak at a conference.",
             "to visit a doctor.",
           ],
+          correctAnswer: 0,
           text: "The main purpose of the trip is",
         },
         {
           id: uuidv4(),
           options: ["sympathetic.", "apathetic.", "cooperative.", "unhelpful."],
+          correctAnswer: 0,
           text: "Peter seems",
         },
       ],
@@ -249,6 +265,7 @@ Peter`,
               "least comfortable",
               "most expensive",
             ],
+            correctAnswer: 0
           },
           {
             id: 2,
@@ -258,10 +275,12 @@ Peter`,
               "takes longer",
               "is more comfortable",
             ],
+            correctAnswer: 0
           },
           {
             id: 3,
             options: ["train station", "bus station", "airport", "hotel"],
+            correctAnswer: 0
           },
           {
             id: 4,
@@ -271,6 +290,7 @@ Peter`,
               "driving",
               "staying an extra day",
             ],
+            correctAnswer: 0
           },
           {
             id: 5,
@@ -280,6 +300,7 @@ Peter`,
               "go to the conference.",
               "go to the hotel.",
             ],
+            correctAnswer: 0
           },
         ],
       },
@@ -317,38 +338,47 @@ E. Not given in any of the above paragraphs.`,
           {
             id: 1,
             options: ["A", "B", "C", "D", "E", "F"],
+            correctAnswer: 0
           },
           {
             id: 2,
             options: ["A", "B", "C", "D", "E", "F"],
+            correctAnswer: 0
           },
           {
             id: 3,
             options: ["A", "B", "C", "D", "E", "F"],
+            correctAnswer: 0
           },
           {
             id: 4,
             options: ["A", "B", "C", "D", "E", "F"],
+            correctAnswer: 0
           },
           {
             id: 5,
             options: ["A", "B", "C", "D", "E", "F"],
+            correctAnswer: 0
           },
           {
             id: 6,
             options: ["A", "B", "C", "D", "E", "F"],
+            correctAnswer: 0
           },
           {
             id: 7,
             options: ["A", "B", "C", "D", "E", "F"],
+            correctAnswer: 0
           },
           {
             id: 8,
             options: ["A", "B", "C", "D", "E", "F"],
+            correctAnswer: 0
           },
           {
             id: 9,
             options: ["A", "B", "C", "D", "E", "F"],
+            correctAnswer: 0
           },
         ],
       },
@@ -379,6 +409,7 @@ It turns out Ms. Epstein’s reaction is a common misconception. As Dr. John Rat
             "a partnership between a gym and a French teacher.",
             "a program introduced by Carleton High School’s principal.",
           ],
+          correctAnswer: 0,
           text: "This article is about",
         },
         {
@@ -389,6 +420,7 @@ It turns out Ms. Epstein’s reaction is a common misconception. As Dr. John Rat
             "was designed to make students lose weight in one year.",
             "diminished exercising to focus on academic performance.",
           ],
+          correctAnswer: 0,
           text: "Mr. Gordon’s intervention",
         },
         {
@@ -399,6 +431,7 @@ It turns out Ms. Epstein’s reaction is a common misconception. As Dr. John Rat
             "appealing to his high school students.",
             "conducted in the students’ educational setting.",
           ],
+          correctAnswer: 0,
           text: " The intervention was not",
         },
         {
@@ -409,6 +442,7 @@ It turns out Ms. Epstein’s reaction is a common misconception. As Dr. John Rat
             "increases ADHD symptoms, especially impulsivity.",
             "is more important than sustaining attention.",
           ],
+          correctAnswer: 0,
           text: " According to Dr. Ratney, exercising",
         },
         {
@@ -419,6 +453,7 @@ It turns out Ms. Epstein’s reaction is a common misconception. As Dr. John Rat
             "contradicted Professor Ratney’s expectations.",
             "yielded undesirable effects on Mr. Gordon’s students.",
           ],
+          correctAnswer: 0,
           text: "At the one-year mark, the intervention",
         },
       ],
@@ -434,6 +469,7 @@ It turns out Ms. Epstein’s reaction is a common misconception. As Dr. John Rat
               "develop a cure for ADHD.",
               "finish university while teaching.",
             ],
+            correctAnswer: 0
           },
           {
             id: 7,
@@ -443,6 +479,7 @@ It turns out Ms. Epstein’s reaction is a common misconception. As Dr. John Rat
               "will improve students’ concentration,",
               "will reduce unpremeditated aggression,",
             ],
+            correctAnswer: 0
           },
           {
             id: 8,
@@ -452,6 +489,7 @@ It turns out Ms. Epstein’s reaction is a common misconception. As Dr. John Rat
               "will exercise more",
               "have the best behaviour",
             ],
+            correctAnswer: 0
           },
           {
             id: 9,
@@ -461,6 +499,7 @@ It turns out Ms. Epstein’s reaction is a common misconception. As Dr. John Rat
               "provide too many assignments",
               "distract youths with ADHD",
             ],
+            correctAnswer: 0
           },
           {
             id: 10,
@@ -470,11 +509,19 @@ It turns out Ms. Epstein’s reaction is a common misconception. As Dr. John Rat
               "really need to get more exercise.",
               "don’t have time to do the assignments.",
             ],
+            correctAnswer: 0
           },
-         
         ],
       },
     },
-    
   ],
+
+  endPage: {
+    title: "Practice Test A - End of the Reading Test",
+    instruction: [
+      `This is the end of the Reading Test.`,
+      `Click here to view the Reading Test Score Conversion Chart.`,
+      `Click "NEXT" to continue.`,
+    ],
+  },
 };

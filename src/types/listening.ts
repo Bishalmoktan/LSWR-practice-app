@@ -44,10 +44,15 @@ type Option = {
   
   type ListeningTestData = {
     testName: string;
+    hasAnswerKey: boolean;
     mainInstruction: string[];
     videoInstruction: string;
     demoTest: DemoTest;
     parts: Part[];
+    endPage: {
+      title: string;
+      instruction: string[];
+    }
   };
 
   export type { ListeningTestData, Part, Section, Question, Option };

@@ -2,11 +2,14 @@ export interface Question {
   id: string;
   text: string;
   options: string[];
+  correctAnswer: number;
 }
 
 export interface BlankOption {
   id: number;
   options: string[];
+  correctAnswer: number;
+
 }
 
 export interface FillInTheBlankQuestion {
@@ -50,6 +53,7 @@ type Exercise = CorrespondenceExercise | DiagramExercise
 
 export interface ReadingTestData {
   testName: string;
+  hasAnswerKey: boolean;
   mainInstruction: string[];
   videoInstruction: string;
   demoTest: {
@@ -57,4 +61,8 @@ export interface ReadingTestData {
     exercise: Exercise[];
   };
   exercise: Exercise[];
+  endPage: {
+    title: string;
+    instruction: string[];
+  }
 }

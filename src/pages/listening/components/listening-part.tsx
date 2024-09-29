@@ -9,7 +9,7 @@ export default function ListeningPart() {
     toast.success("Listening test completed", {
       duration: 2000
     })
-    return <Navigate to={"/reading"} />
+    return <Navigate to={"/listening/answer-key"} />
   }
 const part = listeningTestMockData.parts[parseInt(partNumber!) - 1];
 
@@ -18,6 +18,7 @@ const part = listeningTestMockData.parts[parseInt(partNumber!) - 1];
       title={part.title}
       nextLink={`/listening/${partNumber}/instruction`}
       prevLink={`/listening/demo-test`}
+      hasAnswerKey={true}
     >
       <div className="py-4 px-16 text-base ">
         <div className=" flex items-center gap-2 mb-2 font-medium">

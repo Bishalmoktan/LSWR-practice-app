@@ -60,6 +60,7 @@ const Question = ({
         prevLink={prevLink}
         enableNext={enableNext}
         timer={timer}
+        hasAnswerKey={true}
         >
 
           <div className="flex justify-evenly text-customLightBlue text-lg">

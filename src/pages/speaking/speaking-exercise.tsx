@@ -18,7 +18,7 @@ export default function SpeakingExercise() {
     toast.success("Speaking Section completed", {
       duration: 2000,
     });
-    return <Navigate to={"/"} />;
+    return <Navigate to={"/speaking/end-page"} />;
   }
 
   let next = getNextSpeakingExerciseId(exerciseId!);

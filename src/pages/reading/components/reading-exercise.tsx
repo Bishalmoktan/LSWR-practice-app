@@ -22,7 +22,7 @@ export default function ReadingExercise() {
     toast.success("Reading Section completed", {
       duration: 2000,
     });
-    return <Navigate to={"/writing"} />;
+    return <Navigate to={"/reading/end-page"} />;
   }
 
   return (
@@ -31,6 +31,7 @@ export default function ReadingExercise() {
       timer={exercise?.timeLimit}
       nextLink={`/reading/${next}`}
       prevLink="/reading/video-instruction"
+      hasAnswerKey={true}
     >
       <div className="grid grid-cols-1 md:grid-cols-2 text-gray-600">
         {exercise.type === "correspondence" ? (

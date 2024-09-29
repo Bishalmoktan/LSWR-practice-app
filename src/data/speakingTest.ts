@@ -7,6 +7,7 @@ import table from "@/assets/speaking/table.png";
 
 export const speakingTestData: SpeakingTestData = {
   testName: "Practice Test A - Speaking Test",
+  hasAnswerKey: false,
   startAudio:
     "https://instructionalproducts.paragontesting.ca/InstructionalProducts/Areas/FreeOnlineSampleTest/Content/audio/S_Speaking_Start.ogg",
   endAudio:
@@ -107,7 +108,6 @@ export const speakingTestData: SpeakingTestData = {
             "30 minutes from downtown; 5 minutes from shops",
           ],
         },
-        
       ],
       comparison: {
         image: {
@@ -121,12 +121,13 @@ export const speakingTestData: SpeakingTestData = {
             "45 minutes from city; 25 minutes from shops",
           ],
         },
-        info: "Your family is suggesting another house. Persuade your family member that what you chose is more suitable by comparing the two."
-      }
+        info: "Your family is suggesting another house. Persuade your family member that what you chose is more suitable by comparing the two.",
+      },
     },
     {
       id: "6",
-      title: "Practice Test A - Speaking Task 6: Dealing with a Difficult Situation",
+      title:
+        "Practice Test A - Speaking Task 6: Dealing with a Difficult Situation",
       prepartionTime: 60,
       recordingTime: 60,
       hasIntruction: false,
@@ -137,7 +138,7 @@ export const speakingTestData: SpeakingTestData = {
 EITHER
 Talk to your cousin. Explain why she cannot move in for a year.
 OR
-Talk to your roommate. Explain why your cousin should be allowed to move in with you for a year.`
+Talk to your roommate. Explain why your cousin should be allowed to move in with you for a year.`,
     },
     {
       id: "7",
@@ -147,11 +148,13 @@ Talk to your roommate. Explain why your cousin should be allowed to move in with
       hasIntruction: false,
       type: "question",
       question: "Answer the following question.",
-      additionalInfo: "Question: Do you think that young adults should pay rent to their parents if they do not move out by the age of 21? Explain your reasons."
+      additionalInfo:
+        "Question: Do you think that young adults should pay rent to their parents if they do not move out by the age of 21? Explain your reasons.",
     },
     {
       id: "8",
-      title: "Practice Test A - Speaking Task 8: Describing an Unusual Situation",
+      title:
+        "Practice Test A - Speaking Task 8: Describing an Unusual Situation",
       prepartionTime: 30,
       recordingTime: 60,
       hasIntruction: false,
@@ -161,4 +164,11 @@ Talk to your roommate. Explain why your cousin should be allowed to move in with
       imageUrl: table,
     },
   ],
+  endPage: {
+    title: "",
+    instruction: [
+      `This is the end of the Speaking Test.`,
+      `Click here to view the Performance Standards for Speaking.`,
+    ],
+  },
 };

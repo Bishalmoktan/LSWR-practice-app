@@ -3,7 +3,9 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Info } from "lucide-react";
 import { IOption } from "./question";
 import { useLocation, useParams } from "react-router-dom";
-import { getActualQuestionIndex, getTotalQuestionsInPart } from "@/lib/utils";
+import { getActualQuestionIndex, getFlattenedQuestionIndex, getTotalQuestionsInPart } from "@/lib/utils";
+import { useListeningContext } from "@/context/ListeningContext";
+import listeningTestMockData from "@/data/listeningTest";
 
 interface QuestionSectionProps {
   question: string;
@@ -19,7 +21,26 @@ const QuestionSection = ({ options, question }: QuestionSectionProps) => {
     parseInt(questionNumber!)
   );
 
+  const questionIndex = getFlattenedQuestionIndex(listeningTestMockData, parseInt(partNumber!),
+  parseInt(sectionNumber!),
+  parseInt(questionNumber!))
   const location = useLocation();
+
+
+  const  { setUserAnswer, setDemoAnswer } = useListeningContext();
+  const isDemo = location.pathname.includes("demo-test");
+  const handleAnswerChange = (value: string) => {
+    const selectedIndex = options.findIndex(option => option.value === value);
+    if(isDemo){
+      setDemoAnswer(selectedIndex);
+      return;
+    }
+    if(questionIndex){
+      setUserAnswer(questionIndex, selectedIndex); 
+    } else {
+      setUserAnswer(-1, selectedIndex); 
+    }
+  };
   return (
     <div className="border-l flex-1 pt-4 bg-customSkyBlue px-6 min-h-[75vh]">
       <div className="text-gray-600 text-sm mb-4">
@@ -30,15 +51,16 @@ const QuestionSection = ({ options, question }: QuestionSectionProps) => {
         <h3 className="leading-tight">{question}</h3>
       </div>
 
-      <RadioGroup>
+      <RadioGroup onValueChange={handleAnswerChange}>
         {options.map((option, index) => {
           return (
             <div
               key={index}
               className="flex items-center  space-x-2 border-b border-gray-300 border-dotted ml-8 py-2 hover:bg-customGreen"
             >
-              <RadioGroupItem value={option.value} id={option.value} />
+              <RadioGroupItem   value={option.value} id={option.value} />
               {option.type == "text" && (
+
                 <Label className="cursor-pointer" htmlFor={option.value}>
                   {option.value}
                 </Label>

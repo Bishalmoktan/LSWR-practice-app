@@ -24,7 +24,12 @@ type Exercise = WritingExerciseWithoutOption | WritingExerciseWithOption
 
 export interface WritingTestData {
   testName: string;
+  hasAnswerKey: boolean;
   mainInstruction: string[];
   videoInstruction: string;
   exercise: Exercise[];
+  endPage: {
+    title: string;
+    instruction: string[];
+  }
 }

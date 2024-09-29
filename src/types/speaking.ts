@@ -51,11 +51,16 @@ export interface SpeakingTestImage {
   
   export interface SpeakingTestData {
     testName: string;
+    hasAnswerKey: boolean;
     startAudio: string;
     endAudio: string;
     mainInstruction: string[];
     videoInstruction: string;
     demoTest: SpeakingTest;
     exercise: Exercise[];
+    endPage: {
+      title: string;
+      instruction: string[];
+    }
   }
   
