@@ -9,7 +9,7 @@ export default function ListeningPart() {
     toast.success("Listening test completed", {
       duration: 2000
     })
-    return <Navigate to={"/"} />
+    return <Navigate to={"/reading"} />
   }
 const part = listeningTestMockData.parts[parseInt(partNumber!) - 1];
 

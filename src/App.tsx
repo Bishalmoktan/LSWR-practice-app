@@ -18,6 +18,8 @@ import WritingExercise from "./pages/writing/components/writing-exercise";
 import { speakingTestData } from "./data/speakingTest";
 import SpeakingDemoTest from "./pages/speaking/speaking-demo-test";
 import SpeakingExercise from "./pages/speaking/speaking-exercise";
+import SpeakingInstructions from "./pages/speaking/speaking-instruction";
+import { completeTestData } from "./data/completeTest";
 
 const router = createBrowserRouter([
   {
@@ -165,6 +167,21 @@ const router = createBrowserRouter([
         path: "/speaking/:exerciseId",
         element: <SpeakingExercise />,
       },
+      {
+        path: "/speaking/:exerciseId/instruction",
+        element: <SpeakingInstructions />,
+      },
+
+      // complete
+      {
+        path: "/complete-test",
+        element: <VideoInstruction
+        nextLink="/listening"
+        title="Overview Instructional Video"
+        prevLink="/"
+        videoSrc={completeTestData.videoUrl}
+        />
+      }
     ],
   },
 ]);

@@ -22,7 +22,7 @@ export default function ReadingExercise() {
     toast.success("Reading Section completed", {
       duration: 2000,
     });
-    return <Navigate to={"/"} />;
+    return <Navigate to={"/writing"} />;
   }
 
   return (

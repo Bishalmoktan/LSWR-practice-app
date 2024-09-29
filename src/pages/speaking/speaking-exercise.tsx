@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import SpeakingTest from "./speaking-test";
 import { getNextSpeakingExerciseId } from "@/lib/utils";
 import DescribingImage from "./describing-image";
+import ComparingImage from "./comparing-image";
 
 export default function SpeakingExercise() {
   const { exerciseId } = useParams();
@@ -20,8 +21,13 @@ export default function SpeakingExercise() {
     return <Navigate to={"/"} />;
   }
 
-  const next = getNextSpeakingExerciseId(exerciseId!);
-  console.log(next);
+  let next = getNextSpeakingExerciseId(exerciseId!);
+  if(next){
+    const nextExercise = speakingTestData.exercise.find((item) => item.id === next);
+    if(nextExercise?.hasIntruction){
+      next += "/instruction";
+    }
+  }
 
   return (
     <CardLayout
@@ -39,6 +45,7 @@ export default function SpeakingExercise() {
               title={exercise.question}
               preparationTime={exercise.prepartionTime}
               recordingTime={exercise.recordingTime}
+              additionalInfo={exercise.additionalInfo}
             />
           </>
         )}
@@ -52,6 +59,11 @@ export default function SpeakingExercise() {
               imageUrl={exercise.imageUrl}
             />
           </>
+        )}
+        {exercise.type === "comparsion" && (
+          <ComparingImage
+            {...exercise}
+          />
         )}
       </div>
     </CardLayout>

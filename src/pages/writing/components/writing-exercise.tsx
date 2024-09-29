@@ -20,7 +20,7 @@ export default function WritingExercise() {
     toast.success("Writing Section completed", {
       duration: 2000,
     });
-    return <Navigate to={"/"} />;
+    return <Navigate to={"/speaking"} />;
   }
   return (
     <CardLayout

@@ -5,12 +5,14 @@ interface SpeakingTestProps {
   title: string;
   preparationTime: number;
   recordingTime: number;
+  additionalInfo?: string;
 }
 
 export default function SpeakingTest({
   title,
   preparationTime,
   recordingTime,
+  additionalInfo
 }: SpeakingTestProps) {
   return (
     <div>
@@ -20,6 +22,10 @@ export default function SpeakingTest({
         </span>
         {title}
       </h2>
+      {
+      additionalInfo &&  <div className="whitespace-pre-wrap font-medium text-gray-600">{additionalInfo}</div>
+
+      }
       <Separator className="my-8" />
       <Timer preparationTime={preparationTime} recordingTime={recordingTime} />
     </div>

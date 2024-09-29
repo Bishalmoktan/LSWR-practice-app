@@ -22,7 +22,9 @@ export default {
         customDarkBlue: "#0044CB",
         customLightBlue: "#19578A",
         customSkyBlue: "#EEF8F9",
+        customDarkSkyBlue: "#ADD8E6",
         customGreen: "#DDFFB7",
+        customLightGreen: "#ECFAE1",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {

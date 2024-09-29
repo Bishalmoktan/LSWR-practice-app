@@ -1,7 +1,7 @@
 
 export const routes = [
     {
-        path: "/",
+        path: "/complete-test",
         label: "COMPLETE TEST",
     },
     {
