@@ -1,7 +1,6 @@
 import CardLayout from "@/components/card-layout";
 import { speakingTestData } from "@/data/speakingTest";
 import { Navigate, useParams } from "react-router-dom";
-import { toast } from "sonner";
 import SpeakingTest from "./speaking-test";
 import { getNextSpeakingExerciseId } from "@/lib/utils";
 import DescribingImage from "./describing-image";
@@ -15,9 +14,6 @@ export default function SpeakingExercise() {
   );
 
   if (!exercise) {
-    toast.success("Speaking Section completed", {
-      duration: 2000,
-    });
     return <Navigate to={"/speaking/end-page"} />;
   }
 

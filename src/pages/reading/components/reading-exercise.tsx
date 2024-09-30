@@ -2,7 +2,6 @@
 import CardLayout from "@/components/card-layout";
 import { readingTestMockData } from "@/data/readingTest";
 import { Navigate, useParams } from "react-router-dom";
-import { toast } from "sonner";
 import { QuestionSet } from "./question-set";
 import { ReadingPassage } from "./reading-passage";
 import { FillInTheBlankResponse } from "./fillInTheBlankQuestion";
@@ -19,10 +18,7 @@ export default function ReadingExercise() {
   
 
   if (!exercise) {
-    toast.success("Reading Section completed", {
-      duration: 2000,
-    });
-    return <Navigate to={"/reading/end-page"} />;
+    return <Navigate to={"/reading/answer-key"} />;
   }
 
   return (

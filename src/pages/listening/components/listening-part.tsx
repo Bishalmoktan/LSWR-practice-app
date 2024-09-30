@@ -1,14 +1,10 @@
 import CardLayout from "@/components/card-layout";
 import listeningTestMockData from "@/data/listeningTest";
 import { Navigate, useParams } from "react-router-dom";
-import { toast } from "sonner";
 
 export default function ListeningPart() {
   const { partNumber } = useParams();
   if(parseInt(partNumber!) > listeningTestMockData.parts.length){
-    toast.success("Listening test completed", {
-      duration: 2000
-    })
     return <Navigate to={"/listening/answer-key"} />
   }
 const part = listeningTestMockData.parts[parseInt(partNumber!) - 1];

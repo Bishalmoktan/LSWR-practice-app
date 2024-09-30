@@ -22,7 +22,7 @@ import SpeakingInstructions from "./pages/speaking/speaking-instruction";
 import { completeTestData } from "./data/completeTest";
 import EndPage from "./components/end-page";
 import AnswerKeyPage from "./pages/listening/components/listening-answer-key";
-import ListeningResult from "./pages/listening/components/listening-result";
+import Result from "./components/result";
 import ReadingAnswerKey from "./pages/reading/components/reading-answer-key";
 
 const router = createBrowserRouter([
@@ -90,10 +90,9 @@ const router = createBrowserRouter([
       },
       {
         path: "/listening/result",
-        element: <ListeningResult
-          // data={listeningTestMockData}
-          // title="Practice Test A - Listening Answer Key"
-          // nextLink="/listening/result"
+        element: <Result
+          nextLink="/listening/end-page"
+          title="Listening"
         />
       },
       {
@@ -156,10 +155,9 @@ const router = createBrowserRouter([
       },
       {
         path: "/reading/result",
-        element: <ListeningResult
-          // data={listeningTestMockData}
-          // title="Practice Test A - Listening Answer Key"
-          // nextLink="/listening/result"
+        element: <Result
+          title="Reading"
+          nextLink="/reading/end-page"
         />
       },
 

@@ -2,7 +2,6 @@
 import CardLayout from "@/components/card-layout";
 import { writingTestMockData } from "@/data/writingTest";
 import { Navigate, useParams } from "react-router-dom";
-import { toast } from "sonner";
 import { ScenarioSection } from "./scenario-section";
 import { WritingSection } from "./writing-section";
 import { WritingSectionOption } from "./writing-section-option";
@@ -17,9 +16,6 @@ export default function WritingExercise() {
   
 
   if (!exercise) {
-    toast.success("Writing Section completed", {
-      duration: 2000,
-    });
     return <Navigate to={"/writing/end-page"} />;
   }
   return (

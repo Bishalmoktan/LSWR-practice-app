@@ -3,7 +3,6 @@ import CardLayout from "@/components/card-layout";
 import { speakingTestData } from "@/data/speakingTest";
 import { SpeakingTestComparison } from "@/types/speaking";
 import { Navigate, useParams } from "react-router-dom"
-import { toast } from "sonner";
 
 export default function SpeakingInstructions() {
   const { exerciseId } = useParams();
@@ -12,9 +11,6 @@ export default function SpeakingInstructions() {
   ) as SpeakingTestComparison;
 
   if (!exercise) {
-    toast.success("Speaking Section completed", {
-      duration: 2000,
-    });
     return <Navigate to={"/"} />;
   }
 

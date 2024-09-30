@@ -6,7 +6,16 @@ import { useListeningContext } from "@/context/ListeningContext";
 import CardLayout from "@/components/card-layout";
 import { useLocation } from "react-router-dom";
 
-const ListeningResult = () => {
+interface ResultProps {
+  title: string;
+  nextLink: string;
+}
+
+const Result = ({
+  title,
+  nextLink, 
+  
+} : ResultProps) => {
   const questions = getFlattenedQuestions(listeningTestMockData);
   const totalQuestions = questions.length;
   const { userAnswers } = useListeningContext();
@@ -24,15 +33,15 @@ const ListeningResult = () => {
 
   return (
     <CardLayout
-        title="Practice Test A - Your Listening CELPIP Score"
-        nextLink="/listening/end-page"
+        title={`Practice Test A - Your ${title} CELPIP Score`}
+        nextLink={nextLink}
         prevLink={location.pathname}
     >
 
 <div className="py-2 px-8 space-y-16">
 
         <Card className="rounded-none border border-gray-300 border-b-0">
-        <h1 className="text-center py-2 bg-[#CECBC7] font-medium">CELPIP-GENERAL LISTENING TEST</h1>
+        <h1 className="text-center py-2 bg-[#CECBC7] font-medium">CELPIP-GENERAL {title} TEST</h1>
           <Table>
             <TableHeader >
                 <TableHead className="text-black text-center">Number of Questions</TableHead>
@@ -54,7 +63,7 @@ const ListeningResult = () => {
         <CardHeader className="text-center py-4 font-semibold">A Note About Your CELPIP Score</CardHeader>
         <CardContent>
           <p className="tracking-tight">
-            The score provided here is an estimate based on the <span className="text-customRed hover:underline cursor-pointer">Listening Test
+            The score provided here is an estimate based on the <span className="text-customRed hover:underline cursor-pointer">{title} Test
             Score Conversion Chart.</span> Each CELPIP test item is field tested and
             reviewed by an expert panel before it is integrated into the
             official test. Since questions may have different levels of
@@ -73,4 +82,4 @@ const ListeningResult = () => {
   );
 };
 
-export default ListeningResult;
+export default Result;
