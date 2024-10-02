@@ -13,7 +13,7 @@ export const routes = [
         label: "READING",
     },
     {
-        path: "/writing",
+        path: "/writing/1",
         label: "WRITING",
     },
     {

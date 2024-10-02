@@ -1,8 +1,10 @@
 import { Separator } from "@/components/ui/separator";
 import React, { useState } from "react";
 
-interface WritingSectionProps {
-  options: string[];
+interface MCQQuestionProps {
+  options: {
+    text: string;
+}[];
   questionInfo: string;
 }
 
@@ -10,14 +12,12 @@ function numberToLetter(num: number) {
   return String.fromCharCode(65 + num);
 }
 
-export const WritingSectionOption: React.FC<WritingSectionProps> = ({
+export const MCQQuestion: React.FC<MCQQuestionProps> = ({
   options,
   questionInfo,
 }) => {
-  // State to track selected option
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
 
-  // Handler for radio button change
   const handleOptionChange = (index: number) => {
     setSelectedOption(index);
   };
@@ -38,7 +38,7 @@ export const WritingSectionOption: React.FC<WritingSectionProps> = ({
               onChange={() => handleOptionChange(index)}
               className="mr-2"
             />
-            <span className="font-medium">Option {numberToLetter(index)}:</span> {option}
+            <span className="font-medium">Option {numberToLetter(index)}:</span> {option.text}
           </label>
         ))}
       </div>

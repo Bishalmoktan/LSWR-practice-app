@@ -9,7 +9,6 @@ import { Separator } from "./ui/separator";
 interface EndPageProps {
   title: string;
   nextLink: string;
-  prevLink: string;
   instructions: string[];
 }
 
@@ -20,11 +19,12 @@ const data = [
   "Sample Writing and Speaking responses for one test, and much more!",
 ];
 
-const EndPage = ({ title, nextLink, prevLink, instructions }: EndPageProps) => {
+const EndPage = ({ title, nextLink, instructions }: EndPageProps) => {
   const location = useLocation();
-  const isLastPage = location.pathname.includes("speaking");
+  const isLastPage = location.pathname.includes("speaking");  
+  const { prevPage } = location.state || {};
   return (
-    <CardLayout title={title} nextLink={nextLink} prevLink={prevLink}>
+    <CardLayout title={title} nextLink={nextLink} prevLink={prevPage}>
       <div className="py-6 px-16  min-h-[75vh]">
         <ul className="list-disc mb-4 max-w-[70%]">
           {instructions.map((instruction, index) => (

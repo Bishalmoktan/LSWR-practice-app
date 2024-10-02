@@ -517,10 +517,9 @@ It turns out Ms. Epstein’s reaction is a common misconception. As Dr. John Rat
   ],
 
   endPage: {
-    title: "Practice Test A - End of the Reading Test",
+    title: "Practice Test A - End of the Writing Test",
     instruction: [
-      `This is the end of the Reading Test.`,
-      `Click here to view the Reading Test Score Conversion Chart.`,
+      `This is the end of the Writing Test.`,
       `Click "NEXT" to continue.`,
     ],
   },

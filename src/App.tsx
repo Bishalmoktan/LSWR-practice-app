@@ -13,8 +13,6 @@ import MainInstruction from "./components/main-instruction";
 import { readingTestMockData } from "./data/readingTest";
 import DemoReadingTest from "./pages/reading/components/demo-test";
 import ReadingExercise from "./pages/reading/components/reading-exercise";
-import { writingTestMockData } from "./data/writingTest";
-import WritingExercise from "./pages/writing/components/writing-exercise";
 import { speakingTestData } from "./data/speakingTest";
 import SpeakingDemoTest from "./pages/speaking/speaking-demo-test";
 import SpeakingExercise from "./pages/speaking/speaking-exercise";
@@ -24,6 +22,7 @@ import EndPage from "./components/end-page";
 import AnswerKeyPage from "./pages/listening/components/listening-answer-key";
 import Result from "./components/result";
 import ReadingAnswerKey from "./pages/reading/components/reading-answer-key";
+import Writing from "./pages/writing/writing";
 
 const router = createBrowserRouter([
   {
@@ -101,7 +100,6 @@ const router = createBrowserRouter([
           title={listeningTestMockData.endPage.title}
           instructions={listeningTestMockData.endPage.instruction}
           nextLink="/reading"
-          prevLink="/listening"
         />,
       },
       
@@ -142,7 +140,6 @@ const router = createBrowserRouter([
           title={readingTestMockData.endPage.title}
           instructions={readingTestMockData.endPage.instruction}
           nextLink="/writing"
-          prevLink="/listening"
         />,
       },
       {
@@ -164,39 +161,19 @@ const router = createBrowserRouter([
       
 
       // Writing
-      {
-        path: "/writing",
-        element: <MainInstruction
-          title={writingTestMockData.testName}
-          instructions={writingTestMockData.mainInstruction}
-          nextLink="/writing/video-instruction"
-          prevLink="/"
-          subtitle="Writing Test Instructions"
-        />,
-      },
-      {
-        path: "/writing/video-instruction",
-        element: <VideoInstruction
-        title="Writing Instruction Video"
-        nextLink={`/writing/1`}
-        prevLink="/writing"
-        videoSrc={writingTestMockData.videoInstruction}
+     {
+      path: "/writing/:sectionId",
+      element: <Writing />,
+     },
 
-        />,
-      },
-      {
-        path: "/writing/:exerciseId",
-        element: <WritingExercise />,
-      },
-      {
-        path: "/writing/end-page",
-        element: <EndPage
-          title={writingTestMockData.endPage.title}
-          instructions={writingTestMockData.endPage.instruction}
-          nextLink="/speaking"
-          prevLink="/writing"
-        />,
-      },
+     {
+      path: "/writing/end-page",
+      element: <EndPage
+        title={readingTestMockData.endPage.title}
+        instructions={readingTestMockData.endPage.instruction}
+        nextLink="/speaking"
+      />,
+    },
 
 
 
@@ -239,7 +216,6 @@ const router = createBrowserRouter([
           title={speakingTestData.endPage.title}
           instructions={speakingTestData.endPage.instruction}
           nextLink="/"
-          prevLink="/writing"
         />,
       },
 
