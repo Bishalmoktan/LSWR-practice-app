@@ -1,18 +1,19 @@
-import listeningTestMockData from "@/data/listeningTest";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Clock, Info } from "lucide-react";
 import { useEffect, useState } from "react";
-import CardLayout from "@/components/card-layout";
 
-const Preparation = () => {
-    const [timer, setTimer] = useState(10);
-    const { partNumber, sectionNumber } = useParams();
-    const part = listeningTestMockData.parts[parseInt(partNumber!) - 1];
-    const section = part.sections[parseInt(sectionNumber!) - 1];
-  
-    const next = `/listening/${partNumber}/audio/${sectionNumber}`;
+interface PreparationProps {
+  time: number;
+  next: string;
+  info: string;
+}
 
-    const prev = `/listening/${partNumber}/audio/${sectionNumber}`
+const Preparation = ({
+  time,
+  next,
+  info
+} : PreparationProps) => {
+    const [timer, setTimer] = useState(time);
     const naviate = useNavigate();
 
     useEffect(() => {
@@ -31,15 +32,10 @@ const Preparation = () => {
     
   
   return (
-    <CardLayout
-    title={section.title}
-    nextLink={next}
-    prevLink={prev}
-    >
         <div className="py-4 px-8">
         <div className="flex items-start gap-2 mb-4 tracking-tight text-customLightBlue">
         <Info className="self-start " />
-        <h3 className="tracking-wide font-medium">{ "You will hear the second section of the conversation shortly."}</h3>
+        <h3 className="tracking-wide font-medium">{info}</h3>
       </div>
          <div className="mx-auto bg-gray-200 py-6 px-10 rounded-md flex items-center justify-between w-fit gap-8">
           <Clock />
@@ -49,7 +45,6 @@ const Preparation = () => {
           </div>
         </div>
         </div>
-    </CardLayout>
   )
 }
 export default Preparation

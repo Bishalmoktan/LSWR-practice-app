@@ -1,84 +1,82 @@
-import { Info } from 'lucide-react';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { useParams } from 'react-router-dom';
-import listeningTestMockData from '@/data/listeningTest';
-import CardLayout from '@/components/card-layout';
-import { getFlattenedQuestionIndex } from '@/lib/utils';
-import { useListeningContext } from '@/context/ListeningContext';
-import { Option } from '@/types/listening';
+import { Info } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Choice, Question } from "@/types/listening";
+import { useListeningContext } from "@/context/ListeningContext";
+import { getFlattenedQuestionIndex } from "@/lib/utils";
 
 interface QuestionnaireComponentProps {
-  time: number;
-  title: string;
-  nextLink: string;
-  prevLink: string;
+  questions: Question[];
+  sectionTitle: string;
 }
 
 const QuestionnaireComponent = ({
-  title,
-  time,
-  nextLink,
-  prevLink,
-} : QuestionnaireComponentProps) => {
-    const { partNumber, sectionNumber } = useParams();
-    const part = listeningTestMockData.parts[parseInt(partNumber!) - 1];
-    const section = part.sections[parseInt(sectionNumber!) - 1];
+  questions,
+  sectionTitle,
+}: QuestionnaireComponentProps) => {
+  const { setUserAnswer, listeningData } = useListeningContext();
 
-    const { setUserAnswer } = useListeningContext();
+  const handleChange = (
+    value: string,
+    questionText: string,
+    options: Choice[]
+  ) => {
+    const questionIndex = getFlattenedQuestionIndex(
+      listeningData,
+      sectionTitle,
+      questionText
+    );
 
-    const handleChange = (value: string, questionNumber: number, options : Option[]) => {
-      const questionIndex = getFlattenedQuestionIndex(listeningTestMockData, 
-        parseInt(partNumber!),
-        parseInt(sectionNumber!),
-        questionNumber
-      )
+    const selectedIndex = options.findIndex((option) => option.text === value);
+    console.log(questionIndex, "selected");
 
-    const selectedIndex = options.findIndex(option => option.value === value);
-
-
-      
-      setUserAnswer(questionIndex || -1, selectedIndex)
-      
-    }
-  
+    setUserAnswer(questionIndex || -1, selectedIndex);
+  };
 
   return (
-    <CardLayout
-    title={title}
-    enableNext={true}
-    timer={time}
-    nextLink={nextLink}
-    prevLink={prevLink}
-    >
-
     <div className="p-6 bg-customSkyBlue min-h-[75vh]">
       <div className="flex items-center gap-2 mb-4 text-customLightBlue">
         <Info size={24} />
-        <h2 className="font-medium">Choose the best way to complete each statement from the drop-down menu (▼).</h2>
+        <h2 className="font-medium">
+          Choose the best way to complete each statement from the drop-down menu
+          (▼).
+        </h2>
       </div>
-      
+
       <ol className="space-y-4">
-        {section.questions.map((question, index) => (
-          <li key={index} className="flex items-center gap-2 text-gray-600 text-sm">
+        {questions.map((question, index) => (
+          <li
+            key={index}
+            className="flex items-center gap-2 text-gray-600 text-sm"
+          >
             <span className="">{index + 1}.</span>
-            <span className="">{question.questionText}</span>
-            <Select onValueChange={(value) => handleChange(value, index + 1, question.options)}>
+            <span className="">{question.text}</span>
+            <Select
+              onValueChange={(value) =>
+                handleChange(value, question.text, question.choices!)
+              }
+            >
               <SelectTrigger className="min-w-20 w-fit rounded-none border-none bg-white font-semibold text-xl focus:outline-none focus:ring-0">
-                <SelectValue placeholder=""  />
+                <SelectValue placeholder="" />
               </SelectTrigger>
               <SelectContent>
-                {question.options.map((option, index) => 
-                <SelectItem key={index} value={option.value}>{option.value}</SelectItem>
-                )}
-               
+                {question.choices &&
+                  question.choices.map((option, index) => (
+                    <SelectItem key={index} value={option.text!}>
+                      {option.text}
+                    </SelectItem>
+                  ))}
               </SelectContent>
             </Select>
           </li>
         ))}
       </ol>
     </div>
-    </CardLayout>
-
   );
 };
 

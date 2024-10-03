@@ -1,10 +1,10 @@
-interface InsructionHeaderProps {
+interface InstructionHeaderProps {
     text: string;
 }
 
-export default function InsructionHeader({
+export default function InstructionHeader({
     text
-} : InsructionHeaderProps) {
+} : InstructionHeaderProps) {
   return (
     <div className="px-8 pt-4  flex items-center gap-2 font-medium text-customLightBlue">
       <span className="inline-block bg-customLightBlue text-white rounded-full w-6 h-6 text-center mr-2">

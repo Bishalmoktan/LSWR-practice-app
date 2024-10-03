@@ -1,7 +1,6 @@
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { getFlattenedQuestions } from "@/lib/utils";
-import listeningTestMockData from "@/data/listeningTest";
+import { flattenListeningTest } from "@/lib/utils";
 import { useListeningContext } from "@/context/ListeningContext";
 import CardLayout from "@/components/card-layout";
 import { useLocation } from "react-router-dom";
@@ -16,15 +15,23 @@ const Result = ({
   nextLink, 
   
 } : ResultProps) => {
-  const questions = getFlattenedQuestions(listeningTestMockData);
+  const { userAnswers, listeningData } = useListeningContext();
+  const questions = flattenListeningTest(listeningData);
   const totalQuestions = questions.length;
-  const { userAnswers } = useListeningContext();
   const totalScore = () => {
     let score = 0;
     userAnswers.forEach((answer, index) => {
-      if (answer === questions[index]?.question.correctAnswer) {
+      if (
+        answer >= 0 && 
+        questions[index].question.choices && 
+        (
+          questions[index].question.choices[answer].text === questions[index].question.correctAnswer || 
+          questions[index].question.choices[answer].image === questions[index].question.correctAnswer
+        )
+      ) {
         score += 1;
       }
+      
     });
     return score;
   };

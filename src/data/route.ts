@@ -5,7 +5,7 @@ export const routes = [
         label: "COMPLETE TEST",
     },
     {
-        path: "/listening",
+        path: "/listening/1",
         label: "LISTENING",
     },
     {

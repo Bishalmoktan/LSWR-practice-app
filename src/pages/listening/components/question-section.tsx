@@ -1,40 +1,29 @@
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Info } from "lucide-react";
-import { IOption } from "./question";
-import { useLocation, useParams } from "react-router-dom";
-import { getActualQuestionIndex, getFlattenedQuestionIndex, getTotalQuestionsInPart } from "@/lib/utils";
+import { Choice } from "@/types/listening";
+import { countQuestionsBySectionTitle, getFlattenedQuestionIndex, getQuestionIndex } from "@/lib/utils";
 import { useListeningContext } from "@/context/ListeningContext";
-import listeningTestMockData from "@/data/listeningTest";
 
 interface QuestionSectionProps {
   question: string;
-  options: IOption[];
+  options: Choice[];
+  title: string;
+  audioSrc: string;
 }
 
-const QuestionSection = ({ options, question }: QuestionSectionProps) => {
-  const { partNumber, sectionNumber, questionNumber } = useParams();
-  const totalQuestion = getTotalQuestionsInPart(parseInt(partNumber!));
-  const currentQuestion = getActualQuestionIndex(
-    parseInt(partNumber!),
-    parseInt(sectionNumber!),
-    parseInt(questionNumber!)
-  );
+const QuestionSection = ({ options, question, title, audioSrc }: QuestionSectionProps) => {
 
-  const questionIndex = getFlattenedQuestionIndex(listeningTestMockData, parseInt(partNumber!),
-  parseInt(sectionNumber!),
-  parseInt(questionNumber!))
-  const location = useLocation();
+  const { listeningData, setUserAnswer } = useListeningContext();
+ 
+  const totalQuestions = countQuestionsBySectionTitle(listeningData, title);
+  const currentQuestion = getQuestionIndex(listeningData, title, audioSrc);
+  const questionIndex = getFlattenedQuestionIndex(listeningData, title, audioSrc);
 
-
-  const  { setUserAnswer, setDemoAnswer } = useListeningContext();
-  const isDemo = location.pathname.includes("demo-test");
   const handleAnswerChange = (value: string) => {
-    const selectedIndex = options.findIndex(option => option.value === value);
-    if(isDemo){
-      setDemoAnswer(selectedIndex);
-      return;
-    }
+    console.log(value);
+    const selectedIndex = options.findIndex(option => option.image === value || option.text === value);
+   
     if(questionIndex){
       setUserAnswer(questionIndex, selectedIndex); 
     } else {
@@ -44,7 +33,7 @@ const QuestionSection = ({ options, question }: QuestionSectionProps) => {
   return (
     <div className="border-l flex-1 pt-4 bg-customSkyBlue px-6 min-h-[75vh]">
       <div className="text-gray-600 text-sm mb-4">
-       {!location.pathname.includes("demo-test") &&  `Question ${currentQuestion} of ${totalQuestion}`}
+       {`Question ${currentQuestion} of ${totalQuestions}`}
       </div>
       <div className="flex items-start gap-2 mb-4 tracking-tight">
         <Info className="self-start mt-[2px]" />
@@ -58,16 +47,17 @@ const QuestionSection = ({ options, question }: QuestionSectionProps) => {
               key={index}
               className="flex items-center  space-x-2 border-b border-gray-300 border-dotted ml-8 py-2 hover:bg-customGreen"
             >
-              <RadioGroupItem   value={option.value} id={option.value} />
-              {option.type == "text" && (
 
-                <Label className="cursor-pointer" htmlFor={option.value}>
-                  {option.value}
+              <RadioGroupItem   value={option.text! || option.image!} id={option.text || option.image} />
+              {option.text && (
+
+                <Label className="cursor-pointer" htmlFor={option.text}>
+                  {option.text}
                 </Label>
               )}
-              {option.type == "image" && (
-                <Label className="cursor-pointer" htmlFor={option.value}>
-                  <img src={option.value} className="w-44" alt="option" />
+              {option.image && (
+                <Label className="cursor-pointer" htmlFor={option.image}>
+                  <img src={option.image} className="w-44" alt="option" />
                 </Label>
               )}
             </div>

@@ -1,32 +1,31 @@
 
-import { createContext, useContext, useState, ReactNode, SetStateAction } from 'react';
-import { ListeningTestData } from "@/types/listening";
-import listeningTestMockData from '@/data/listeningTest';
-import { getFlattenedQuestions } from '@/lib/utils';
+import { createContext, useContext, ReactNode, useState } from 'react';
+import  { listening } from '@/data/listeningTest';
+import { ListeningTest } from '@/types/listening';
+import { flattenListeningTest } from '@/lib/utils';
 
 interface ListeningContextType {
-  data: ListeningTestData
+  listeningData: ListeningTest;
   userAnswers: number[]; 
-  demoAnswer: number;
-  setDemoAnswer: React.Dispatch<SetStateAction<number>>;
   setUserAnswer: (index: number, answer: number) => void; 
+
 }
 
 const ListeningContext = createContext<ListeningContextType | undefined>(undefined);
 
 export const ListeningProvider = ({ children }: { children: ReactNode }) => {
-  const [userAnswers, setUserAnswers] = useState<number[]>(new Array(getFlattenedQuestions(listeningTestMockData).length).fill(-1)); 
-  const [demoAnswer, setDemoAnswer] = useState<number>(-1); 
-  const data = listeningTestMockData;
+  const listeningData = listening;
+  const [userAnswers, setUserAnswers] = useState<number[]>(new Array(flattenListeningTest(listeningData).length).fill(-1)); 
 
   const setUserAnswer = (index: number, answer: number) => {
     const updatedAnswers = [...userAnswers];
     updatedAnswers[index] = answer;
     setUserAnswers(updatedAnswers);
   };
+  
 
   return (
-    <ListeningContext.Provider value={{ data, userAnswers, setUserAnswer, demoAnswer, setDemoAnswer }}>
+    <ListeningContext.Provider value={{ listeningData, userAnswers, setUserAnswer}}>
       {children}
     </ListeningContext.Provider>
   );
