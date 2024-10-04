@@ -1,4 +1,4 @@
-import { DropdownSelect } from "@/components/dropdown-select";
+import { DropdownSelect } from "@/pages/reading/components/dropdown-select";
 import { Question } from "@/types/reading";
 import React from "react";
 
@@ -24,12 +24,12 @@ export const QuestionSet: React.FC<QuestionSetProps> = ({
       <div className="border border-black p-4 rounded-md space-y-2">
         {questions.map((question, index) => (
           <div
-            key={question.id}
+            key={question.question}
             className="flex items-center gap-2 text-gray-600 text-sm flex-wrap"
           >
             <span className="">{index + 1}.</span>
-            <span className="">{question.text}</span>
-            <DropdownSelect options={question.options} />
+            <span className="">{question.question}</span>
+            <DropdownSelect question={question} />
           </div>
         ))}
       </div>

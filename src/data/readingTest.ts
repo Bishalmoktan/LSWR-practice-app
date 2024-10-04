@@ -1,12 +1,12 @@
-import { ReadingTestData } from "@/types/reading";
 import { v4 as uuidv4 } from "uuid";
 
 import train from "../assets/reading/train.png";
 import car from "../assets/reading/car.png";
 import plane from "../assets/reading/plane.png";
 import bus from "../assets/reading/bus.png";
+import { ReadingTest } from "@/types/reading";
 
-export const readingTestMockData: ReadingTestData = {
+export const readingTestMockData = {
   testName: "Practice Test A - Reading Test",
   hasAnswerKey: true,
   mainInstruction: [
@@ -38,13 +38,11 @@ export const readingTestMockData: ReadingTestData = {
               "British Columbia",
               "Nova Scotia",
             ],
-            correctAnswer: 0
+            correctAnswer: 0,
           },
         ],
       },
-      
     ],
-    
   },
   exercise: [
     {
@@ -74,7 +72,7 @@ Maria`,
           id: uuidv4(),
           text: "Maria's mother is now",
           options: ["in Vancouver", "in Victoria", "in Chile", "not mentioned"],
-          correctAnswer: 0
+          correctAnswer: 0,
         },
         {
           id: uuidv4(),
@@ -85,13 +83,13 @@ Maria`,
             "visit Disneyland",
             "get married",
           ],
-          correctAnswer: 0
+          correctAnswer: 0,
         },
         {
           id: uuidv4(),
           text: "Marco is feeling",
           options: ["apprehensive", "excited", "sad", "indifferent"],
-          correctAnswer: 0
+          correctAnswer: 0,
         },
         {
           id: uuidv4(),
@@ -102,7 +100,7 @@ Maria`,
             "offering a low salary",
             "not mentioned",
           ],
-          correctAnswer: 0
+          correctAnswer: 0,
         },
         {
           id: uuidv4(),
@@ -113,7 +111,7 @@ Maria`,
             "the cost of living in Tokyo",
             "Marco's language skills",
           ],
-          correctAnswer: 0
+          correctAnswer: 0,
         },
         {
           id: uuidv4(),
@@ -124,7 +122,7 @@ Maria`,
             "work together",
             "live in the same city",
           ],
-          correctAnswer: 0
+          correctAnswer: 0,
         },
       ],
       fillInTheBlankQuestion: {
@@ -143,11 +141,19 @@ Mea`,
           {
             id: 7,
             options: ["the party", "Marco's farewell", "the graduation"],
-            correctAnswer: 0
+            correctAnswer: 0,
           },
-          { id: 8, options: ["Calgary", "Vancouver", "Victoria"], correctAnswer: 0 },
-          { id: 9, options: ["party", "decorations", "apartment"], correctAnswer: 0 },
-          
+          {
+            id: 8,
+            options: ["Calgary", "Vancouver", "Victoria"],
+            correctAnswer: 0,
+          },
+          {
+            id: 9,
+            options: ["party", "decorations", "apartment"],
+            correctAnswer: 0,
+          },
+
           {
             id: 10,
             options: [
@@ -155,7 +161,7 @@ Mea`,
               "is too expensive",
               "isn't practical",
             ],
-            correctAnswer: 0
+            correctAnswer: 0,
           },
           { id: 11, options: ["job", "move", "winter"], correctAnswer: 0 },
         ],
@@ -265,7 +271,7 @@ Peter`,
               "least comfortable",
               "most expensive",
             ],
-            correctAnswer: 0
+            correctAnswer: 0,
           },
           {
             id: 2,
@@ -275,12 +281,12 @@ Peter`,
               "takes longer",
               "is more comfortable",
             ],
-            correctAnswer: 0
+            correctAnswer: 0,
           },
           {
             id: 3,
             options: ["train station", "bus station", "airport", "hotel"],
-            correctAnswer: 0
+            correctAnswer: 0,
           },
           {
             id: 4,
@@ -290,7 +296,7 @@ Peter`,
               "driving",
               "staying an extra day",
             ],
-            correctAnswer: 0
+            correctAnswer: 0,
           },
           {
             id: 5,
@@ -300,7 +306,7 @@ Peter`,
               "go to the conference.",
               "go to the hotel.",
             ],
-            correctAnswer: 0
+            correctAnswer: 0,
           },
         ],
       },
@@ -338,47 +344,47 @@ E. Not given in any of the above paragraphs.`,
           {
             id: 1,
             options: ["A", "B", "C", "D", "E", "F"],
-            correctAnswer: 0
+            correctAnswer: 0,
           },
           {
             id: 2,
             options: ["A", "B", "C", "D", "E", "F"],
-            correctAnswer: 0
+            correctAnswer: 0,
           },
           {
             id: 3,
             options: ["A", "B", "C", "D", "E", "F"],
-            correctAnswer: 0
+            correctAnswer: 0,
           },
           {
             id: 4,
             options: ["A", "B", "C", "D", "E", "F"],
-            correctAnswer: 0
+            correctAnswer: 0,
           },
           {
             id: 5,
             options: ["A", "B", "C", "D", "E", "F"],
-            correctAnswer: 0
+            correctAnswer: 0,
           },
           {
             id: 6,
             options: ["A", "B", "C", "D", "E", "F"],
-            correctAnswer: 0
+            correctAnswer: 0,
           },
           {
             id: 7,
             options: ["A", "B", "C", "D", "E", "F"],
-            correctAnswer: 0
+            correctAnswer: 0,
           },
           {
             id: 8,
             options: ["A", "B", "C", "D", "E", "F"],
-            correctAnswer: 0
+            correctAnswer: 0,
           },
           {
             id: 9,
             options: ["A", "B", "C", "D", "E", "F"],
-            correctAnswer: 0
+            correctAnswer: 0,
           },
         ],
       },
@@ -469,7 +475,7 @@ It turns out Ms. Epstein’s reaction is a common misconception. As Dr. John Rat
               "develop a cure for ADHD.",
               "finish university while teaching.",
             ],
-            correctAnswer: 0
+            correctAnswer: 0,
           },
           {
             id: 7,
@@ -479,7 +485,7 @@ It turns out Ms. Epstein’s reaction is a common misconception. As Dr. John Rat
               "will improve students’ concentration,",
               "will reduce unpremeditated aggression,",
             ],
-            correctAnswer: 0
+            correctAnswer: 0,
           },
           {
             id: 8,
@@ -489,7 +495,7 @@ It turns out Ms. Epstein’s reaction is a common misconception. As Dr. John Rat
               "will exercise more",
               "have the best behaviour",
             ],
-            correctAnswer: 0
+            correctAnswer: 0,
           },
           {
             id: 9,
@@ -499,7 +505,7 @@ It turns out Ms. Epstein’s reaction is a common misconception. As Dr. John Rat
               "provide too many assignments",
               "distract youths with ADHD",
             ],
-            correctAnswer: 0
+            correctAnswer: 0,
           },
           {
             id: 10,
@@ -509,7 +515,7 @@ It turns out Ms. Epstein’s reaction is a common misconception. As Dr. John Rat
               "really need to get more exercise.",
               "don’t have time to do the assignments.",
             ],
-            correctAnswer: 0
+            correctAnswer: 0,
           },
         ],
       },
@@ -525,4 +531,1009 @@ It turns out Ms. Epstein’s reaction is a common misconception. As Dr. John Rat
   },
 };
 
+export const reading: ReadingTest = {
+  type: "Reading",
+  structure: [
+    {
+      title: "Reading Test",
 
+      instructions: [
+        {
+          text: "Reading Test Instructions",
+        },
+        {
+          text: "On the official test, once you leave a page, you cannot go back to it to change your answers. However, in this sample test, you can.",
+        },
+        {
+          text: "Watch the timer in the top right corner to make sure that you complete the Reading Test before the time is up. For more information on test format, click here.",
+        },
+        {
+          text: "This Reading Test is identical in format to the official test except that the Reading section of the official test may be slightly longer as it might contain additional questions included for research and development purposes.",
+        },
+      ],
+    },
+    {
+      title: "Reading Instructional Video",
+      instructions: [
+        {
+          video:
+            "https://instructionalproducts.paragontesting.ca/InstructionalProducts/Areas/FreeOnlineSampleTest/Content/video/CELPIP-G_Reading.mp4",
+        },
+      ],
+    },
+    {
+      title: "Reading Practice Task",
+      description:
+        "Canada is surrounded on three sides by oceans. To the north, the Arctic Ocean borders Yukon, Northwest Territories, and the leaving party.. Off the west coast of British Columbia is the Pacific Ocean. The Atlantic Ocean, meanwhile, sits to the east of Canada's Maritime provinces, which include Nova Scotia, New Brunswick, and Prince Edward Island.",
+      instructions: [{ text: "Read the following message" }],
+      duration: 30,
+      questionSets: [
+        {
+          instructions: [
+            {
+              text: "Using the drop-down menu (▼), choose the best option according to the information given in the message.",
+            },
+          ],
+          questions: [
+            {
+              question: "Which province is on the Pacific Ocean?",
+              type: "mcq",
+              choices: [
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+              ],
+              correctAnswer: "answer",
+              score: 5,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      title: "Reading Part 1: Reading Correspondence",
+      description:
+        "Hi Mea,I’m sorry for taking so long to reply to your email. As you know, I’ve been very busy this summer with Marco’s university graduation and my family’s visit from Chile. The graduation ceremony was great! Too bad you guys couldn’t make it, but we understand it’s a bit of a drive from Calgary. You were truly missed. My Mum remembers you well from when we were kids. After the celebrations, we took the family sightseeing here in Vancouver. They loved it! They left yesterday for Victoria, and will catch a plane back home from there in three days.",
+      instructions: [{ text: "Read the following message" }],
+      duration: 600,
+      questionSets: [
+        {
+          instructions: [
+            {
+              text: "Using the drop-down menu (  ), choose the best option according to the information given in the message.",
+            },
+          ],
+          questions: [
+            {
+              question: "Which province is on the Pacific Ocean?",
+              type: "mcq",
+              choices: [
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+              ],
+              correctAnswer: "answer",
+              score: 5,
+            },
+
+            {
+              question: "Which province is on the Pacific Ocean?",
+              type: "mcq",
+              choices: [
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+              ],
+              correctAnswer: "answer",
+              score: 5,
+            },
+            {
+              question: "Which province is on the Pacific Ocean?",
+              type: "mcq",
+              choices: [
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+              ],
+              correctAnswer: "answer",
+              score: 5,
+            },
+            {
+              question: "Which province is on the Pacific Ocean?",
+              type: "mcq",
+              choices: [
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+              ],
+              correctAnswer: "answer",
+              score: 5,
+            },
+            {
+              question: "Which province is on the Pacific Ocean?",
+              type: "mcq",
+              choices: [
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+              ],
+              correctAnswer: "answer",
+              score: 5,
+            },
+            {
+              question: "Which province is on the Pacific Ocean?",
+              type: "mcq",
+              choices: [
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+              ],
+              correctAnswer: "answer",
+              score: 5,
+            },
+          ],
+        },
+        {
+          instructions: [
+            {
+              text: "Here is a response to the message. Complete the response by filling in the blanks. Select the best choice for each blank from the drop-downmenu (-).",
+            },
+          ],
+          questions: [
+            {
+              question: "Which province is on the Pacific Ocean?",
+              type: "mcq",
+              choices: [
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+              ],
+              correctAnswer: "answer",
+              score: 5,
+            },
+            {
+              question: "Which province is on the Pacific Ocean?",
+              type: "mcq",
+              choices: [
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+              ],
+              correctAnswer: "answer",
+              score: 5,
+            },
+            {
+              question: "Which province is on the Pacific Ocean?",
+              type: "mcq",
+              choices: [
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+              ],
+              correctAnswer: "answer",
+              score: 5,
+            },
+            {
+              question: "Which province is on the Pacific Ocean?",
+              type: "mcq",
+              choices: [
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+              ],
+              correctAnswer: "answer",
+              score: 5,
+            },
+            {
+              question: "Which province is on the Pacific Ocean?",
+              type: "mcq",
+              choices: [
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+              ],
+              correctAnswer: "answer",
+              score: 5,
+            },
+            {
+              question: "Which province is on the Pacific Ocean?",
+              type: "mcq",
+              choices: [
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+              ],
+              correctAnswer: "answer",
+              score: 5,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      title: "Reading Part 2: Reading to Apply a Diagram",
+      description: "image markdown here",
+      duration: 600,
+      questionSets: [
+        {
+          instructions: [
+            {
+              text: "Read the following email message about the diagram on the left. Complete the email by filling in the blanks. Select the best choice for each blank from the drop-down menu (  ).",
+            },
+          ],
+          questions: [
+            {
+              question: "Which province is on the Pacific Ocean?",
+              type: "mcq",
+              choices: [
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+              ],
+              correctAnswer: "answer",
+              score: 5,
+            },
+
+            {
+              question: "Which province is on the Pacific Ocean?",
+              type: "mcq",
+              choices: [
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+              ],
+              correctAnswer: "answer",
+              score: 5,
+            },
+            {
+              question: "Which province is on the Pacific Ocean?",
+              type: "mcq",
+              choices: [
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+              ],
+              correctAnswer: "answer",
+              score: 5,
+            },
+            {
+              question: "Which province is on the Pacific Ocean?",
+              type: "mcq",
+              choices: [
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+              ],
+              correctAnswer: "answer",
+              score: 5,
+            },
+            {
+              question: "Which province is on the Pacific Ocean?",
+              type: "mcq",
+              choices: [
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+              ],
+              correctAnswer: "answer",
+              score: 5,
+            },
+            {
+              question: "Which province is on the Pacific Ocean?",
+              type: "mcq",
+              choices: [
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+              ],
+              correctAnswer: "answer",
+              score: 5,
+            },
+          ],
+        },
+        {
+          instructions: [
+            {
+              text: "Using the drop-down menu (-), choose the best option.",
+            },
+          ],
+          questions: [
+            {
+              question: "Which province is on the Pacific Ocean?",
+              type: "mcq",
+              choices: [
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+              ],
+              correctAnswer: "answer",
+              score: 5,
+            },
+            {
+              question: "Which province is on the Pacific Ocean?",
+              type: "mcq",
+              choices: [
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+              ],
+              correctAnswer: "answer",
+              score: 5,
+            },
+            {
+              question: "Which province is on the Pacific Ocean?",
+              type: "mcq",
+              choices: [
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+              ],
+              correctAnswer: "answer",
+              score: 5,
+            },
+            {
+              question: "Which province is on the Pacific Ocean?",
+              type: "mcq",
+              choices: [
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+              ],
+              correctAnswer: "answer",
+              score: 5,
+            },
+            {
+              question: "Which province is on the Pacific Ocean?",
+              type: "mcq",
+              choices: [
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+              ],
+              correctAnswer: "answer",
+              score: 5,
+            },
+            {
+              question: "Which province is on the Pacific Ocean?",
+              type: "mcq",
+              choices: [
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+              ],
+              correctAnswer: "answer",
+              score: 5,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      title: "Reading Part 3: Reading for Information",
+      instructions: [{ text: "Read the following passage." }],
+      description: "complete markdown passage",
+      questionSets: [
+        {
+          instructions: [
+            {
+              text: "Decide which paragraph, A to D, has the information given in each statement below. Select E if the information is not given in any of the paragraphs.",
+            },
+          ],
+          questions: [
+            {
+              question: "Which province is on the Pacific Ocean?",
+              type: "mcq",
+              choices: [
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+              ],
+              correctAnswer: "answer",
+              score: 5,
+            },
+            {
+              question: "Which province is on the Pacific Ocean?",
+              type: "mcq",
+              choices: [
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+              ],
+              correctAnswer: "answer",
+              score: 5,
+            },
+            {
+              question: "Which province is on the Pacific Ocean?",
+              type: "mcq",
+              choices: [
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+              ],
+              correctAnswer: "answer",
+              score: 5,
+            },
+            {
+              question: "Which province is on the Pacific Ocean?",
+              type: "mcq",
+              choices: [
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+              ],
+              correctAnswer: "answer",
+              score: 5,
+            },
+            {
+              question: "Which province is on the Pacific Ocean?",
+              type: "mcq",
+              choices: [
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+              ],
+              correctAnswer: "answer",
+              score: 5,
+            },
+            {
+              question: "Which province is on the Pacific Ocean?",
+              type: "mcq",
+              choices: [
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+              ],
+              correctAnswer: "answer",
+              score: 5,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      title: "Reading Part 4: Reading for Viewpoints",
+      instructions: [{ text: "Read the following article from a website." }],
+      description: `Visitors walking through Carleton High School are often surprised when they pass Bradley Gordon's French class and see students riding on exercise bikes and sitting on yoga balls. Is it a French class, or is it a gym class? Well, it's a bit of both!\n\nTwo major concerns in education are childhood obesity and ADHD, or Attention Deficit Hyperactivity Disorder, a disorder that results in restlessness, hyperactivity, and impulsivity. With high rates of obesity and also students struggling with ADHD in classes across the country, Mr. Gordon came up with an innovative intervention to address both. He decided to infuse academic studies with physical activity in his own classroom.\n\nThe idea came to Gordon after a personal experience in university while working on his bachelor's degree. "I didn't have time to schedule a separate slot for exercise, and my health deteriorated rapidly," said Gordon. "After feeling sick and fatigued for months, I decided to couple my studying with my workouts. To my surprise it proved incredibly helpful. My grades started improving and so did my overall fitness and health."\n\nGordon implemented the approach with his students to great effect last year. Despite the students' excitement and academic improvement, he met resistance from the school's principal, Dawn Epstein, who was not convinced that academics and physical exercise should be amalgamated. "Although exercise is certainly important, I didn't think it had any place in academics. I assumed exercise would exacerbate ADHD,” Epstein asserted.\n\nIt turns out Ms. Epstein’s reaction is a common misconception. As Dr. John Ratney, psychiatry professor at Harvard Medical School, explains: “Exercise turns the attention system on, and helps with working memory, prioritizing and sustaining attention.” Sustained physical exertion causes kids to be less impulsive and more prone to learn. That’s precisely what Mr. Gordon found a year into the intervention. “My students’ endurance, both physical and mental, has improved. They are fit, and eager to learn. Even students diagnosed with ADHD have displayed less physical agitation, which has helped them to learn better.” So, when you walk by Mr. Gordon’s class and see bikes spinning, know that minds are at work.`,
+      duration: 600,
+      questionSets: [
+        {
+          instructions: [
+            {
+              text: "Using the drop-down menu (  ), choose the best option according to the information given on the website.",
+            },
+          ],
+          questions: [
+            {
+              question: "Which province is on the Pacific Ocean?",
+              type: "mcq",
+              choices: [
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+              ],
+              correctAnswer: "answer",
+              score: 5,
+            },
+            {
+              question: "Which province is on the Pacific Ocean?",
+              type: "mcq",
+              choices: [
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+              ],
+              correctAnswer: "answer",
+              score: 5,
+            },
+            {
+              question: "Which province is on the Pacific Ocean?",
+              type: "mcq",
+              choices: [
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+              ],
+              correctAnswer: "answer",
+              score: 5,
+            },
+            {
+              question: "Which province is on the Pacific Ocean?",
+              type: "mcq",
+              choices: [
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+              ],
+              correctAnswer: "answer",
+              score: 5,
+            },
+            {
+              question: "Which province is on the Pacific Ocean?",
+              type: "mcq",
+              choices: [
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+              ],
+              correctAnswer: "answer",
+              score: 5,
+            },
+            {
+              question: "Which province is on the Pacific Ocean?",
+              type: "mcq",
+              choices: [
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+              ],
+              correctAnswer: "answer",
+              score: 5,
+            },
+          ],
+        },
+        {
+          instructions: [
+            {
+              text: "The following is a comment by a visitor to the website page. Complete the comment by choosing the best option to fill in each blank.",
+            },
+          ],
+          questions: [
+            {
+              question: "Which province is on the Pacific Ocean?",
+              type: "mcq",
+              choices: [
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+              ],
+              correctAnswer: "answer",
+              score: 5,
+            },
+            {
+              question: "Which province is on the Pacific Ocean?",
+              type: "mcq",
+              choices: [
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+              ],
+              correctAnswer: "answer",
+              score: 5,
+            },
+            {
+              question: "Which province is on the Pacific Ocean?",
+              type: "mcq",
+              choices: [
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+              ],
+              correctAnswer: "answer",
+              score: 5,
+            },
+            {
+              question: "Which province is on the Pacific Ocean?",
+              type: "mcq",
+              choices: [
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+              ],
+              correctAnswer: "answer",
+              score: 5,
+            },
+            {
+              question: "Which province is on the Pacific Ocean?",
+              type: "mcq",
+              choices: [
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+              ],
+              correctAnswer: "answer",
+              score: 5,
+            },
+            {
+              question: "Which province is on the Pacific Ocean?",
+              type: "mcq",
+              choices: [
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+                {
+                  text: "the leaving party.",
+                },
+              ],
+              correctAnswer: "answer",
+              score: 5,
+            },
+          ],
+        },
+      ],
+    },
+  ],
+};

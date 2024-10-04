@@ -1,66 +1,61 @@
-export interface SpeakingTestImage {
-    id: string;
-    title: string;
-    prepartionTime: number;
-    recordingTime: number;
-    hasIntruction: boolean;
-    type: "image";
-    question: string;
-    imageUrl: string;
-  }
+interface Instruction {
+  text?: string;
+  video?: string;
+}
 
-  export interface ComparisonImage {
-    id: string;
-    name: string;
-    features: string[];
-    imageUrl: string;
-  }
+interface Choice {
+  title?: string;
+  text: string;
+  image?: string;
+  info?: string;
+}
 
-  
-  
-  export interface SpeakingTestComparison {
-    id: string;
-    title: string;
-    prepartionTime: number;
-    selectionTime: number;
-    recordingTime: number;
-    hasIntruction: boolean;
-    type: "comparsion";
-    question: string;
-    instructions: string[];
-    images: ComparisonImage[];
-    additionalInfo?: string;
-    comparison: {
-      image: ComparisonImage;
-      info: string;
-    }
-  }
+interface BaseQuestion {
+  question: string;
+  score?: number;
+  type: 'simple' | 'mcq';
+}
 
-  export interface SpeakingTest {
-    id: string;
-    title: string;
-    prepartionTime: number;
-    recordingTime: number;
-    hasIntruction: boolean;
-    type: "question";
-    question: string;
-    additionalInfo?: string;
-  }
-   
-  type Exercise = SpeakingTest | SpeakingTestImage | SpeakingTestComparison
-  
-  export interface SpeakingTestData {
-    testName: string;
-    hasAnswerKey: boolean;
-    startAudio: string;
-    endAudio: string;
-    mainInstruction: string[];
-    videoInstruction: string;
-    demoTest: SpeakingTest;
-    exercise: Exercise[];
-    endPage: {
-      title: string;
-      instruction: string[];
-    }
-  }
-  
+interface SimpleQuestion extends BaseQuestion {
+  type: 'simple';
+}
+
+interface MCQQuestion extends BaseQuestion {
+  type: 'mcq';
+  choices: Choice[];
+}
+
+type Question = SimpleQuestion | MCQQuestion;
+
+interface QuestionSet {
+  instructions?: Instruction[];
+  questions: Question[];
+}
+
+interface TestSection {
+  title: string;
+  description?: string;
+  instructions?: Instruction[];
+  prepTime?: number;
+  recordingTime?: number;
+  selectionTime?: number;
+  questionSets?: QuestionSet[];
+  note?: string;
+}
+
+interface SpeakingTest {
+  type: 'Speaking';
+  structure: TestSection[];
+}
+
+
+export type { 
+  SpeakingTest, 
+  TestSection, 
+  QuestionSet, 
+  Question, 
+  SimpleQuestion, 
+  MCQQuestion, 
+  Choice, 
+  Instruction 
+};

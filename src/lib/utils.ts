@@ -1,7 +1,7 @@
 import listeningTestMockData from "@/data/listeningTest";
 import { readingTestMockData } from "@/data/readingTest";
-import { speakingTestData } from "@/data/speakingTest";
 import { ListeningTest, Question } from "@/types/listening";
+import { ReadingTest, Question as ReadingQuestion } from "@/types/reading";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -59,7 +59,24 @@ export function flattenListeningTest(test: ListeningTest) {
   return flatQuestions;
 }
 
-export function getFlattenedQuestionIndex(
+export function flattenReadingTest(test: ReadingTest) {
+  const flatQuestions: {
+    title: string;
+    question: ReadingQuestion;
+  }[] = [];
+
+  test.structure.forEach((section) => {
+    section.questionSets?.forEach((questionSet) => {
+      questionSet.questions.forEach((question) => {
+        flatQuestions.push({ title: section.title, question });
+      });
+    });
+  });
+
+  return flatQuestions;
+}
+
+export function getFlattenedQuestionIndexListening(
   test: ListeningTest,
   sectionTitle: string,
   audioUrl: string
@@ -75,7 +92,22 @@ export function getFlattenedQuestionIndex(
   return ansIndex;
 }
 
-export function getActualQuestionIndex(
+export function getFlattenedQuestionIndexReading(
+  test: ReadingTest,
+  questionText: string
+): number | null {
+  const flatQuestions = flattenReadingTest(test);
+  let ansIndex = null;
+  flatQuestions.forEach((question, index) => {
+    if(question.question.question === questionText){
+      ansIndex = index;
+      return;
+    }
+  })
+  return ansIndex;
+}
+
+export function getActualQuestionIndexListening(
   test: ListeningTest,
   sectionTitle: string
 ): number | null {
@@ -84,6 +116,21 @@ export function getActualQuestionIndex(
     currentIndex++;
     if (section.questionSets && section.title === sectionTitle) {
       return currentIndex - 1;
+    }
+  }
+
+  return null;
+}
+
+export function getActualQuestionIndexReading(
+  test: ReadingTest,
+  sectionTitle: string
+): number | null {
+  let currentIndex = 0;
+  for (const section of test.structure) {
+    currentIndex++;
+    if (section.questionSets && section.title === sectionTitle) {
+      return currentIndex;
     }
   }
 
@@ -122,20 +169,20 @@ export function getNextExerciseId(currentExerciseId: string): string | null {
   return null;
 }
 
-export function getNextSpeakingExerciseId(
-  currentExerciseId: string
-): string | null {
-  const currentExerciseIndex = speakingTestData.exercise.findIndex(
-    (exercise) => exercise.id === currentExerciseId
-  );
+// export function getNextSpeakingExerciseId(
+//   currentExerciseId: string
+// ): string | null {
+//   const currentExerciseIndex = speakingTestData.exercise.findIndex(
+//     (exercise) => exercise.id === currentExerciseId
+//   );
 
-  if (
-    currentExerciseIndex !== -1 &&
-    currentExerciseIndex < speakingTestData.exercise.length - 1
-  ) {
-    return speakingTestData.exercise[currentExerciseIndex + 1].id;
-  }
+//   if (
+//     currentExerciseIndex !== -1 &&
+//     currentExerciseIndex < speakingTestData.exercise.length - 1
+//   ) {
+//     return speakingTestData.exercise[currentExerciseIndex + 1].id;
+//   }
 
-  return null;
-}
+//   return null;
+// }
 

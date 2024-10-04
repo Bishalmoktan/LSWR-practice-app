@@ -1,38 +1,44 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { ComparisonImage, SpeakingTestComparison } from "@/types/speaking";
+import {  Choice, MCQQuestion } from "@/types/speaking";
 import { useEffect, useState, useRef } from "react";
 import Timer from "./timer";
 import { cn } from "@/lib/utils";
 
+interface ComparingImageProps {
+  prepartionTime: number;
+  recordingTime: number;
+  selectionTime: number;
+  question: MCQQuestion;
+  comparison: Choice
+}
+
 export default function ComparingImage({
-  comparison,
-  images,
   question,
-  additionalInfo,
   prepartionTime,
   recordingTime,
   selectionTime,
-}: SpeakingTestComparison) {
-  const [image1, setImage1] = useState(images[0]);
-  const [image2, setImage2] = useState(images[1]);
-  const selectedImageRef = useRef<ComparisonImage | null>(null);
+  comparison
+}: ComparingImageProps) {
+  const [image1, setImage1] = useState(question.choices[0]);
+  const [image2, setImage2] = useState(question.choices[1]);
+  const selectedChoiceRef = useRef<Choice | null>(null);
   const [timer, setTimer] = useState(selectionTime);
   const [isPreparationPhase, setIsPreparationPhase] = useState(true);
 
-  const handleImageSelect = (image: ComparisonImage) => {
-    selectedImageRef.current = image;
+  const handleImageSelect = (image: Choice) => {
+    selectedChoiceRef.current = image;
   };
 
   useEffect(() => {
     const interval = setInterval(() => {
       setTimer((prev) => {
         if (prev <= 1) {
-          if (selectedImageRef.current) {
-            setImage2(selectedImageRef.current);
+          if (selectedChoiceRef.current) {
+            setImage2(selectedChoiceRef.current);
           } else {
             setImage2(image1);
           }
-          setImage1(comparison.image);
+          setImage1(comparison);
 
           setIsPreparationPhase(false);
 
@@ -53,8 +59,7 @@ export default function ComparingImage({
         </span>
         {isPreparationPhase ? (
           <>
-            <span>{question}</span>
-            <p className="mt-2">{additionalInfo}</p>
+            <span>{question.question}</span>
           </>
         ) : (
           <span>{comparison.info}</span>
@@ -66,7 +71,7 @@ export default function ComparingImage({
           onClick={() => handleImageSelect(image1)}
           className={cn(
             "border border-black rounded-sm h-[500px] cursor-pointer",
-            selectedImageRef.current === image1 && "bg-customDarkSkyBlue"
+            selectedChoiceRef.current === image1 && "bg-customDarkSkyBlue"
           )}
         >
           {!isPreparationPhase && (
@@ -76,17 +81,15 @@ export default function ComparingImage({
           )}
           <CardContent className="p-4">
             <img
-              src={image1.imageUrl}
-              alt={image1.name}
+              src={image1.image}
+              alt={image1.title}
               width={300}
               height={250}
               className="w-full h-64 object-cover mb-4"
             />
-            <h3 className="text-sm text-gray-600">{image1.name}</h3>
-            <div className="list-disc text-sm mt-4 list-inside text-gray-600">
-              {image1.features.map((feature) => (
-                <li key={feature}>{feature}</li>
-              ))}
+            <h3 className="text-sm text-gray-600">{image1.title}</h3>
+            <div className="whitespace-pre-wrap   text-sm mt-4 list-inside text-gray-600">
+              {image1.text}
             </div>
           </CardContent>
         </Card>
@@ -95,7 +98,7 @@ export default function ComparingImage({
           onClick={() => handleImageSelect(image2)}
           className={cn(
             "border border-black rounded-sm h-[500px] cursor-pointer",
-            selectedImageRef.current === image2 && "bg-customDarkSkyBlue",
+            selectedChoiceRef.current === image2 && "bg-customDarkSkyBlue",
             timer === 0 && "bg-customLightGreen"
           )}
         >
@@ -107,17 +110,15 @@ export default function ComparingImage({
 
           <CardContent className="p-4">
             <img
-              src={image2.imageUrl}
-              alt={image2.name}
+              src={image2.image}
+              alt={image2.title}
               width={300}
               height={250}
               className="w-full h-64 object-cover mb-4"
             />
-            <h3 className="text-sm text-gray-600">{image2.name}</h3>
-            <div className="list-disc text-sm mt-4 list-inside text-gray-600">
-              {image2.features.map((feature) => (
-                <li key={feature}>{feature}</li>
-              ))}
+            <h3 className="text-sm text-gray-600">{image2.title}</h3>
+            <div className="whitespace-pre-wrap  text-sm mt-4 list-inside text-gray-600">
+             {image1.text}
             </div>
           </CardContent>
         </Card>

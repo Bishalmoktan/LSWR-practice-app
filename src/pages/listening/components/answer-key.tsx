@@ -10,21 +10,18 @@ import {
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { CheckIcon, X } from "lucide-react";
-import { flattenListeningTest, getActualQuestionIndex } from "@/lib/utils";
+import { flattenListeningTest, getActualQuestionIndexListening } from "@/lib/utils";
 import { useListeningContext } from "@/context/ListeningContext";
 import { Link } from "react-router-dom";
 
-interface AnswerKeyPageProps {
-  title: string;
-  nextLink: string;
-}
 
-export default function AnswerKeyPage({ title, nextLink }: AnswerKeyPageProps) {
+
+export default function ListeningAnswerKeyPage() {
   const { listeningData, userAnswers } = useListeningContext();
   const data = flattenListeningTest(listeningData);
   let currentIndex = 1;
   return (
-    <CardLayout title={title} nextLink={nextLink}>
+    <CardLayout title={"Practice Test A - Listening Answer Key"} nextLink={"/listening/result"}>
       <div className="p-4">
         <Alert className="mb-4 bg-customGray border border-customRed rounded-sm flex gap-2">
           <Badge className="bg-customRed hover:bg-customRed rounded-full h-fit">
@@ -67,7 +64,7 @@ export default function AnswerKeyPage({ title, nextLink }: AnswerKeyPageProps) {
                 <>
                  {prevItem && item.title !== prevItem.title && <div className="my-2 pl-2 text-sm">
                     <Link
-                      to={`/listening/${getActualQuestionIndex(listeningData, prevItem.title)?.toString()}`}
+                      to={`/listening/${getActualQuestionIndexListening(listeningData, prevItem.title)?.toString()}`}
                       className="text-customRed hover:underline"
                     >
                       Return to {prevItem.title}
@@ -139,6 +136,14 @@ export default function AnswerKeyPage({ title, nextLink }: AnswerKeyPageProps) {
                       </div>
                     </TableCell>
                   </TableRow>
+                    {index === data.length - 1 && <div className="my-2 pl-2 text-sm">
+                    <Link
+                      to={`/listening/${getActualQuestionIndexListening(listeningData, prevItem.title)?.toString()}`}
+                      className="text-customRed hover:underline"
+                    >
+                      Return to {prevItem.title}
+                    </Link>
+                  </div>}
                 
                 </>
               );

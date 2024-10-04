@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/select";
 import { Choice, Question } from "@/types/listening";
 import { useListeningContext } from "@/context/ListeningContext";
-import { getFlattenedQuestionIndex } from "@/lib/utils";
+import { getFlattenedQuestionIndexListening } from "@/lib/utils";
 
 interface QuestionnaireComponentProps {
   questions: Question[];
@@ -26,14 +26,13 @@ const QuestionnaireComponent = ({
     questionText: string,
     options: Choice[]
   ) => {
-    const questionIndex = getFlattenedQuestionIndex(
+    const questionIndex = getFlattenedQuestionIndexListening(
       listeningData,
       sectionTitle,
       questionText
     );
 
     const selectedIndex = options.findIndex((option) => option.text === value);
-    console.log(questionIndex, "selected");
 
     setUserAnswer(questionIndex || -1, selectedIndex);
   };

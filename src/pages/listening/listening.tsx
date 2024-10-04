@@ -22,7 +22,7 @@ export default function Listening() {
   if (!section) {
     return (
       <Navigate
-        to={"/listening/end-page"}
+        to={"/listening/answer-key"}
         state={{
           prevPage: pathname,
         }}

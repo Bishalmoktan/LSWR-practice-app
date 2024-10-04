@@ -1,5 +1,4 @@
 import CardLayout from "@/components/card-layout";
-import { ReadingTestData } from "@/types/reading"; // Adjust the import path accordingly
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import {
   Table,
@@ -10,28 +9,21 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
-import { Link } from "react-router-dom";
 import { CheckIcon, X } from "lucide-react";
+import { flattenReadingTest, getActualQuestionIndexReading } from "@/lib/utils";
+import { Link } from "react-router-dom";
 import { useReadingContext } from "@/context/ReadingContext";
 
-interface ReadingAnswerKeyPageProps {
-  data: ReadingTestData;
-  title: string;
-  nextLink: string;
-}
-
-export default function ReadingAnswerKeyPage({
-  data,
-  title,
-  nextLink,
-}: ReadingAnswerKeyPageProps) {
-  const { userAnswers } = useReadingContext(); 
-  console.log(userAnswers)
-
+export default function ReadingAnswerKeyPage() {
+  const { readingData, userAnswers } = useReadingContext();
+  const data = flattenReadingTest(readingData);
+  let currentIndex = 1;
   return (
-    <CardLayout title={title} nextLink={nextLink}>
+    <CardLayout
+      title={"Practice Test A - Reading Answer Key"}
+      nextLink={"/reading/result"}
+    >
       <div className="p-4">
-        {/* Alert Section */}
         <Alert className="mb-4 bg-customGray border border-customRed rounded-sm flex gap-2">
           <Badge className="bg-customRed hover:bg-customRed rounded-full h-fit">
             NOTE
@@ -48,108 +40,82 @@ export default function ReadingAnswerKeyPage({
             <TableRow>
               <TableHead>Question</TableHead>
               <TableHead>Answer Key</TableHead>
-              <TableHead>Your Answer</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
-            {data.demoTest.exercise.map((e, index) => {
-              const userAnswer = 0; 
-              const correctAnswer = e.questions[0].correctAnswer;
-              const isCorrect = userAnswer === correctAnswer;
+            {data.map((item, index) => {
+              const answerIndex = userAnswers[index];
+              const userAnswer =
+                item.question.choices && item.question.choices[answerIndex];
+
+              const correctAnswer = item.question.correctAnswer;
+              let isCorrect = false;
+              if (userAnswer) {
+                isCorrect = userAnswer?.text === correctAnswer;
+              }
+
+              const prevItem = data[index - 1];
+              if (prevItem && item.title !== prevItem.title) {
+                currentIndex = 1;
+              }
 
               return (
-                <TableRow key={`demo-${index}`}>
-                  <TableCell>{`${data.demoTest.title} - Q${index + 1}`}</TableCell>
-                  <TableCell>
-                    {e.questions[0].options[correctAnswer]} 
-                  </TableCell>
-                  <TableCell>
-                    <div className="flex justify-between">
-                      {userAnswer >= 0 ? (
-                        <>
-                          {e.questions[0].options[userAnswer]}
-                          {isCorrect ? (
-                            <CheckIcon
-                              size={20}
-                              className="text-green-500 ml-2 inline-block"
-                            />
-                          ) : (
-                            <X
-                              size={20}
-                              className="text-red-500 ml-2 inline-block"
-                            />
-                          )}
-                        </>
-                      ) : (
-                        ""
-                      )}
+                <>
+                  {prevItem && item.title !== prevItem.title && (
+                    <div className="my-2 pl-2 text-sm">
+                      <Link
+                        to={`/reading/${getActualQuestionIndexReading(readingData, prevItem.title)?.toString()}`}
+                        className="text-customRed hover:underline"
+                      >
+                        Return to {prevItem.title}
+                      </Link>
                     </div>
-                  </TableCell>
-                </TableRow>
+                  )}
+                  <TableRow key={`demo-${index}`}>
+                    <TableCell>{`${item.title}- Q${currentIndex++}`}</TableCell>
+                    <TableCell>                      
+                        {item.question.correctAnswer}
+                    </TableCell>
+                    <TableCell className="">
+                      <div className="flex justify-between">
+                          <>
+                            {answerIndex >= 0 &&
+                              item.question.choices &&
+                              item.question.choices[answerIndex].text}
+                            {isCorrect ? (
+                              <CheckIcon
+                                size={20}
+                                className="text-green-500 ml-2 inline-block"
+                              />
+                            ) : (
+                              <>
+                                {answerIndex >= 0 && (
+                                  <X
+                                    size={20}
+                                    className="text-red-500 ml-2 inline-block"
+                                  />
+                                )}
+                              </>
+                            )}
+                          </>
+                      </div>
+                    </TableCell>
+                  </TableRow>
+                  {index === data.length - 1 && (
+                    <div className="my-2 pl-2 text-sm">
+                      <Link
+                        to={`/reading/${getActualQuestionIndexReading(readingData, prevItem.title)?.toString()}`}
+                        className="text-customRed hover:underline"
+                      >
+                        Return to {prevItem.title}
+                      </Link>
+                    </div>
+                  )}
+                </>
               );
             })}
           </TableBody>
         </Table>
-
-        <div className="my-2 pl-2 text-sm">
-          <Link to="/reading/demo-test" className="text-customRed hover:underline">
-            Return to Practice Task
-          </Link>
-        </div>
-
-        {data.exercise.map((exercise, index) => (
-          <div key={index}>
-            <Table className="text-gray-600 text-sm">
-              <TableBody>
-                {exercise.questions.map((question, questionIndex) => {
-                  const userAnswer = userAnswers[questionIndex]; 
-                  const correctAnswer = question.correctAnswer;
-                  const isCorrect = userAnswer === correctAnswer;
-                  
-                  return (
-                    <TableRow key={`${index}-${questionIndex}`}>
-                      <TableCell>{`${exercise.title} - Q${questionIndex + 1}`}</TableCell>
-                      <TableCell>
-                        {question.options[correctAnswer]} 
-                      </TableCell>
-                      <TableCell>
-                        <div className="flex justify-between">
-                          {userAnswer >= 0 ? (
-                            <>
-                              {question.options[userAnswer]}
-                              {isCorrect ? (
-                                <CheckIcon
-                                  size={20}
-                                  className="text-green-500 ml-2"
-                                />
-                              ) : (
-                                <X
-                                  size={20}
-                                  className="text-red-500 ml-2 inline-block"
-                                />
-                              )}
-                            </>
-                          ) : (
-                            ""
-                          )}
-                        </div>
-                      </TableCell>
-                    </TableRow>
-                  );
-                })}
-              </TableBody>
-            </Table>
-
-            <div className="my-2 pl-2 text-sm">
-              <Link
-                to={`/reading/${exercise.id}/audio/1`}
-                className="text-customRed hover:underline"
-              >
-                Return to the beginning of Part {index + 1}
-              </Link>
-            </div>
-          </div>
-        ))}
       </div>
     </CardLayout>
   );

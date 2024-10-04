@@ -1,8 +1,8 @@
 import { Clock, Mic } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Progress } from "@/components/ui/progress";
-import { speakingTestData } from "@/data/speakingTest";
 import { useLocation } from "react-router-dom";
+import { useSpeakingContext } from "@/context/SpeakingContext";
 
 interface TimerProps {
   preparationTime: number;
@@ -15,7 +15,7 @@ const Timer = ({ preparationTime, recordingTime }: TimerProps) => {
   const [show, setShow] = useState(false);
   const [recordingDuration] = useState(recordingTime);
 
-  const { endAudio, startAudio } = speakingTestData;
+  const { endAudio, startAudio } = useSpeakingContext();
 
   const startRef = useRef<HTMLAudioElement>(null);
   const endRef = useRef<HTMLAudioElement>(null);
@@ -24,7 +24,7 @@ const Timer = ({ preparationTime, recordingTime }: TimerProps) => {
 
   useEffect(() => {
     setTime(preparationTime);
-  }, [location])
+  }, [location.pathname])
 
  
 

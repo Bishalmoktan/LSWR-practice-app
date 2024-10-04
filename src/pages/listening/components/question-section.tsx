@@ -2,7 +2,7 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Info } from "lucide-react";
 import { Choice } from "@/types/listening";
-import { countQuestionsBySectionTitle, getFlattenedQuestionIndex, getQuestionIndex } from "@/lib/utils";
+import { countQuestionsBySectionTitle, getFlattenedQuestionIndexListening, getQuestionIndex } from "@/lib/utils";
 import { useListeningContext } from "@/context/ListeningContext";
 
 interface QuestionSectionProps {
@@ -18,10 +18,9 @@ const QuestionSection = ({ options, question, title, audioSrc }: QuestionSection
  
   const totalQuestions = countQuestionsBySectionTitle(listeningData, title);
   const currentQuestion = getQuestionIndex(listeningData, title, audioSrc);
-  const questionIndex = getFlattenedQuestionIndex(listeningData, title, audioSrc);
+  const questionIndex = getFlattenedQuestionIndexListening(listeningData, title, audioSrc);
 
   const handleAnswerChange = (value: string) => {
-    console.log(value);
     const selectedIndex = options.findIndex(option => option.image === value || option.text === value);
    
     if(questionIndex){

@@ -34,7 +34,7 @@ export const ListeningProvider = ({ children }: { children: ReactNode }) => {
 export const useListeningContext = () => {
   const context = useContext(ListeningContext);
   if (!context) {
-    throw new Error("useQuizContext must be used within a ListeningProvider");
+    throw new Error("useListeningContext must be used within a ListeningProvider");
   }
   return context;
 };

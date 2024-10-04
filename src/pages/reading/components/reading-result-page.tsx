@@ -1,22 +1,14 @@
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { flattenListeningTest } from "@/lib/utils";
-import { useListeningContext } from "@/context/ListeningContext";
+import {  flattenReadingTest } from "@/lib/utils";
 import CardLayout from "@/components/card-layout";
 import { useLocation } from "react-router-dom";
+import { useReadingContext } from "@/context/ReadingContext";
 
-interface ResultProps {
-  title: string;
-  nextLink: string;
-}
 
-const Result = ({
-  title,
-  nextLink, 
-  
-} : ResultProps) => {
-  const { userAnswers, listeningData } = useListeningContext();
-  const questions = flattenListeningTest(listeningData);
+const ReadingResult = () => {
+  const { userAnswers, readingData } = useReadingContext();
+  const questions = flattenReadingTest(readingData);
   const totalQuestions = questions.length;
   const totalScore = () => {
     let score = 0;
@@ -25,8 +17,7 @@ const Result = ({
         answer >= 0 && 
         questions[index].question.choices && 
         (
-          questions[index].question.choices[answer].text === questions[index].question.correctAnswer || 
-          questions[index].question.choices[answer].image === questions[index].question.correctAnswer
+          questions[index].question.choices[answer].text === questions[index].question.correctAnswer 
         )
       ) {
         score += 1;
@@ -40,15 +31,15 @@ const Result = ({
 
   return (
     <CardLayout
-        title={`Practice Test A - Your ${title} CELPIP Score`}
-        nextLink={nextLink}
+        title={`Practice Test A - Your Reading CELPIP Score`}
+        nextLink={"/reading/end-page"}
         prevLink={location.pathname}
     >
 
 <div className="py-2 px-8 space-y-16">
 
         <Card className="rounded-none border border-gray-300 border-b-0">
-        <h1 className="text-center py-2 bg-[#CECBC7] font-medium">CELPIP-GENERAL {title} TEST</h1>
+        <h1 className="text-center py-2 bg-[#CECBC7] font-medium">CELPIP-GENERAL READING TEST</h1>
           <Table>
             <TableHeader >
                 <TableHead className="text-black text-center">Number of Questions</TableHead>
@@ -70,7 +61,7 @@ const Result = ({
         <CardHeader className="text-center py-4 font-semibold">A Note About Your CELPIP Score</CardHeader>
         <CardContent>
           <p className="tracking-tight">
-            The score provided here is an estimate based on the <span className="text-customRed hover:underline cursor-pointer">{title} Test
+            The score provided here is an estimate based on the <span className="text-customRed hover:underline cursor-pointer">Reading Test
             Score Conversion Chart.</span> Each CELPIP test item is field tested and
             reviewed by an expert panel before it is integrated into the
             official test. Since questions may have different levels of
@@ -89,4 +80,4 @@ const Result = ({
   );
 };
 
-export default Result;
+export default ReadingResult;

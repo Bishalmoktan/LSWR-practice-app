@@ -9,7 +9,7 @@ export const routes = [
         label: "LISTENING",
     },
     {
-        path: "/reading",
+        path: "/reading/1",
         label: "READING",
     },
     {
@@ -17,7 +17,7 @@ export const routes = [
         label: "WRITING",
     },
     {
-        path: "/speaking",
+        path: "/speaking/1",
         label: "SPEAKING",
     },
 ]

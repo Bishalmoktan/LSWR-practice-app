@@ -1,31 +1,31 @@
 
-import { createContext, useContext, useState, ReactNode, SetStateAction } from 'react';
-import { ReadingTestData } from '@/types/reading';
-import { readingTestMockData } from '@/data/readingTest';
+import { createContext, useContext, ReactNode, useState } from 'react';
+import { reading } from '@/data/readingTest';
+import { ReadingTest } from '@/types/reading';
+import { flattenReadingTest } from '@/lib/utils';
 
 interface ReadingContextType {
-  data: ReadingTestData
+  readingData: ReadingTest;
   userAnswers: number[]; 
-  demoAnswer: number;
-  setDemoAnswer: React.Dispatch<SetStateAction<number>>;
   setUserAnswer: (index: number, answer: number) => void; 
+
 }
 
 const ReadingContext = createContext<ReadingContextType | undefined>(undefined);
 
 export const ReadingProvider = ({ children }: { children: ReactNode }) => {
-  const [userAnswers, setUserAnswers] = useState<number[]>(new Array(readingTestMockData.demoTest.exercise.length).fill(-1)); 
-  const [demoAnswer, setDemoAnswer] = useState<number>(-1); 
-  const data = readingTestMockData;
+  const readingData = reading;
+  const [userAnswers, setUserAnswers] = useState<number[]>(new Array(flattenReadingTest(readingData).length).fill(-1)); 
 
   const setUserAnswer = (index: number, answer: number) => {
     const updatedAnswers = [...userAnswers];
     updatedAnswers[index] = answer;
     setUserAnswers(updatedAnswers);
   };
+  
 
   return (
-    <ReadingContext.Provider value={{ data, userAnswers, setUserAnswer, demoAnswer, setDemoAnswer }}>
+    <ReadingContext.Provider value={{ readingData, userAnswers, setUserAnswer}}>
       {children}
     </ReadingContext.Provider>
   );
@@ -34,7 +34,7 @@ export const ReadingProvider = ({ children }: { children: ReactNode }) => {
 export const useReadingContext = () => {
   const context = useContext(ReadingContext);
   if (!context) {
-    throw new Error("useQuizContext must be used within a ReadingProvider");
+    throw new Error("useReadingContext must be used within a ReadingProvider");
   }
   return context;
 };
