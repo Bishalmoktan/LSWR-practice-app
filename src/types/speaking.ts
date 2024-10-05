@@ -23,6 +23,10 @@ interface SimpleQuestion extends BaseQuestion {
 interface MCQQuestion extends BaseQuestion {
   type: 'mcq';
   choices: Choice[];
+  defaultAnswer?: {
+    text: string;
+    choice: Choice
+  }
 }
 
 type Question = SimpleQuestion | MCQQuestion;

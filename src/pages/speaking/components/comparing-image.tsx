@@ -9,7 +9,7 @@ interface ComparingImageProps {
   recordingTime: number;
   selectionTime: number;
   question: MCQQuestion;
-  comparison: Choice
+  comparison: Choice | undefined;
 }
 
 export default function ComparingImage({
@@ -38,7 +38,9 @@ export default function ComparingImage({
           } else {
             setImage2(image1);
           }
-          setImage1(comparison);
+          if(comparison){
+            setImage1(comparison);
+          }
 
           setIsPreparationPhase(false);
 
@@ -62,7 +64,7 @@ export default function ComparingImage({
             <span>{question.question}</span>
           </>
         ) : (
-          <span>{comparison.info}</span>
+          <span>{comparison?.info}</span>
         )}
       </div>
 

@@ -312,17 +312,15 @@ export const speaking: SpeakingTest = {
       ],
     },
     {
-      title: "Speaking Task 5: Comparing and Persuading",
+      title: "Practice Test A - Speaking Task 5: Comparing and Persuading",
       prepTime: 60,
       recordingTime: 60,
-      selectionTime: 60,
       note: "This sample test is not recording your response.",
       questionSets: [
         {
           questions: [
             {
-              question:
-                "Your family is relocating to another area, and you are looking for a new home there. You found two suitable options. Using the pictures and information below, choose the option that you prefer. In the next section, you will need to persuade a family member that your choice is the better choice. If you do not choose an option, the computer will choose one for you. You do not need to speak for this part.",
+              question: "Your family is relocating to another area, and you are looking for a new home there. You found two suitable options. Using the pictures and information below, choose the option that you prefer. In the next section, you will need to persuade a family member that your choice is the better choice. If you do not choose an option, the computer will choose one for you. You do not need to speak for this part.",
               type: "mcq",
               choices: [
                 {
@@ -335,13 +333,16 @@ export const speaking: SpeakingTest = {
                   text: "- $300,000\n- 3 bedrooms and 3 bathrooms\n- 2,800 square feet\n- 30 minutes from downtown; 5 minutes from shops",
                   image: house2,
                 },
-                {
-                  title: "Charming Detached Home in the Country",
-                  text: "- $210,000\n- 2 bedrooms and 1 bathroom\n- 1,000 square feet\n- 45 minutes from city; 25 minutes from shops",
-                  image: house3,
-                  info: "Your family is suggesting another house. Persuade your family member that what you chose is more suitable by comparing the two."
-                },
               ],
+              defaultAnswer: {
+                text: "Your family is suggesting another house. Persuade your family member that what you chose is more suitable by comparing the two.",
+                choice: {
+                  title: "Your Family’s Choice",
+                  text: "Charming Detached Home in the Country\n- $210,000\n- 2 bedrooms and 1 bathroom\n- 1,000 square feet\n- 45 minutes from city; 25 minutes from shops",
+                  image: house3,
+                },
+              },
+              score: 10,
             },
           ],
         },

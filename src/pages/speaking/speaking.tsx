@@ -71,8 +71,8 @@ export default function Speaking() {
                 <ComparingImage
                   prepartionTime={section.prepTime!}
                   recordingTime={section.recordingTime!}
-                  selectionTime={10}
-                  comparison={section.questionSets[0].questions[0].choices[2]}
+                  selectionTime={section.prepTime!}
+                  comparison={section?.questionSets[0]?.questions[0]?.defaultAnswer?.choice}
                   question={section.questionSets[0].questions[0]}
                 />
               </div>
