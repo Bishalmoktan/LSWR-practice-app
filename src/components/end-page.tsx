@@ -42,14 +42,14 @@ const EndPage = ({ title, nextLink, instructions }: EndPageProps) => {
         {isLastPage && (
           <div>
             <Separator className="my-8" />
-            <div className=" flex items-center gap-2 mb-2 font-medium text-customLightBlue">
+            <div className="flex items-center gap-2 mb-2 font-medium  text-customLightBlue">
               <Info />
               <h3 className="">End of Practice Test A</h3>
             </div>
 
             <Link
               to={"/"}
-              className="text-customRed ml-8 font-medium text-lg hover:underline"
+              className="ml-8 text-lg font-medium text-customBlue hover:underline"
             >
               Back to Main
             </Link>
@@ -62,13 +62,13 @@ const EndPage = ({ title, nextLink, instructions }: EndPageProps) => {
             <img src={img} alt="book" className="w-72" />
             <Button
               size="lg"
-              className="bg-customRed hover:bg-customRed/90 text-white text-lg px-20 py-2 rounded-none"
+              className="px-20 py-2 text-lg text-white rounded-none bg-customBlue hover:bg-customBlue/90"
             >
               Buy Now
             </Button>
           </div>
 
-          <div className="col-span-2 text-gray-600 flex flex-col">
+          <div className="flex flex-col col-span-2 text-gray-600">
             <h2 className="text-xl font-medium">
               Keep practicing with the CELPIP Practice Tests!
             </h2>
@@ -79,7 +79,7 @@ const EndPage = ({ title, nextLink, instructions }: EndPageProps) => {
               </p>
               <div>
                 {data.map((item, index) => (
-                  <div className="flex gap-2 items-center">
+                  <div className="flex items-center gap-2">
                     <Check className="size-5" />
                     <p key={index} className="text-sm">
                       {item}
@@ -89,8 +89,8 @@ const EndPage = ({ title, nextLink, instructions }: EndPageProps) => {
               </div>
             </div>
 
-            <div className="text-customRed mt-10">
-              <span className="class text-lg font-medium">
+            <div className="mt-10 text-customBlue">
+              <span className="text-lg font-medium class">
                 {" "}
                 Save up to $30.00{" "}
               </span>{" "}

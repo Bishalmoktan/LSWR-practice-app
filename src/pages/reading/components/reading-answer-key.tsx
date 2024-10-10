@@ -24,8 +24,8 @@ export default function ReadingAnswerKeyPage() {
       nextLink={"/reading/result"}
     >
       <div className="p-4">
-        <Alert className="mb-4 bg-customGray border border-customRed rounded-sm flex gap-2">
-          <Badge className="bg-customRed hover:bg-customRed rounded-full h-fit">
+        <Alert className="flex gap-2 mb-4 border rounded-sm bg-customGray border-customBlue">
+          <Badge className="rounded-full bg-customBlue hover:bg-customBlue h-fit">
             NOTE
           </Badge>
           <AlertDescription className="text-gray-600">
@@ -35,7 +35,7 @@ export default function ReadingAnswerKeyPage() {
           </AlertDescription>
         </Alert>
 
-        <Table className="text-gray-600 text-sm">
+        <Table className="text-sm text-gray-600">
           <TableHeader>
             <TableRow>
               <TableHead>Question</TableHead>
@@ -62,10 +62,10 @@ export default function ReadingAnswerKeyPage() {
               return (
                 <>
                   {prevItem && item.title !== prevItem.title && (
-                    <div className="my-2 pl-2 text-sm">
+                    <div className="pl-2 my-2 text-sm">
                       <Link
                         to={`/reading/${getActualQuestionIndexReading(readingData, prevItem.title)?.toString()}`}
-                        className="text-customRed hover:underline"
+                        className="text-customBlue hover:underline"
                       >
                         Return to {prevItem.title}
                       </Link>
@@ -85,14 +85,14 @@ export default function ReadingAnswerKeyPage() {
                             {isCorrect ? (
                               <CheckIcon
                                 size={20}
-                                className="text-green-500 ml-2 inline-block"
+                                className="inline-block ml-2 text-green-500"
                               />
                             ) : (
                               <>
                                 {answerIndex >= 0 && (
                                   <X
                                     size={20}
-                                    className="text-red-500 ml-2 inline-block"
+                                    className="inline-block ml-2 text-red-500"
                                   />
                                 )}
                               </>
@@ -102,10 +102,10 @@ export default function ReadingAnswerKeyPage() {
                     </TableCell>
                   </TableRow>
                   {index === data.length - 1 && (
-                    <div className="my-2 pl-2 text-sm">
+                    <div className="pl-2 my-2 text-sm">
                       <Link
                         to={`/reading/${getActualQuestionIndexReading(readingData, prevItem.title)?.toString()}`}
-                        className="text-customRed hover:underline"
+                        className="text-customBlue hover:underline"
                       >
                         Return to {prevItem.title}
                       </Link>

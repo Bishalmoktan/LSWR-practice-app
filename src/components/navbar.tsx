@@ -1,4 +1,3 @@
-import { Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Select,
@@ -12,41 +11,46 @@ import { Link } from "react-router-dom";
 const Navabr = () => {
   return (
     <header className="bg-white shadow-md">
-      <div className="px-4 lg:px-6 py-4 flex justify-between items-center">
-        <div className="flex flex-1 items-center">
+      <div className="flex items-center justify-between px-4 py-2 lg:px-6">
+        <div className="flex items-center flex-1">
           <Link to={"/"}>
-          <img
-            src="/logo.png"
-            alt="CELPIP Logo"
-            className="mr-2 w-48 object-cover"
+            <img
+              src="/logo.png"
+              alt="CELPIP Logo"
+              className="object-cover mr-2 w-80"
             />
-            </Link>
-          <h1 className="text-xl font-semibold text-gray-800">
-            Study Materials
-          </h1>
+          </Link>
+          
         </div>
-        <div className="flex-1 hidden md:flex gap-2 items-center ">
-          <p className="text-customRed text-sm">Selected Product: </p>
+        <div className="items-center flex-1 hidden gap-2 md:flex ">
+          <p className="text-sm text-[#262161] font-semibold">Selected Product: </p>
           <Select>
             <SelectTrigger className="w-fit">
               <SelectValue placeholder="Click to Select Product" />
             </SelectTrigger>
-            <SelectContent className="bg-customRed text-white">
-              <SelectItem value="practice-test" className="focus:bg-customDarkRed focus:text-white">FREE CELPIP-GENERAL PRACTICE TESTS (STARTER SET)</SelectItem>
-              <SelectItem value="ls-practice-test" className="focus:bg-customDarkRed focus:text-white">FREE CELPIP-GENERAL LS PRACTICE TESTS (STARTER SET)</SelectItem>
+            <SelectContent className="">
+              <SelectItem
+                value="practice-test"
+                className=""
+              >
+                FREE CELPIP-GENERAL PRACTICE TESTS (STARTER SET)
+              </SelectItem>
+              <SelectItem
+                value="ls-practice-test"
+                className=""
+              >
+                FREE CELPIP-GENERAL LS PRACTICE TESTS (STARTER SET)
+              </SelectItem>
             </SelectContent>
           </Select>
         </div>
-        <div className="flex-1 flex justify-end">
+        <div className="flex justify-end flex-1">
           <Button
             variant="ghost"
-            className="hover:bg-transparent group"
+            className="text-white bg-customBlue hover:bg-customBlue/90 hover:text-white"
             aria-label="Sign in"
           >
-            <Settings className="mr-2" />
-            <span className="group-hover:text-customGold text-base transition duration-200">
-              SIGN IN
-            </span>
+            <span className="text-base transition duration-200">SIGN IN</span>
           </Button>
         </div>
       </div>

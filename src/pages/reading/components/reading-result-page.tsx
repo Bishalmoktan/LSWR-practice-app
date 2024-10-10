@@ -36,32 +36,32 @@ const ReadingResult = () => {
         prevLink={location.pathname}
     >
 
-<div className="py-2 px-8 space-y-16">
+<div className="px-8 py-2 space-y-16">
 
-        <Card className="rounded-none border border-gray-300 border-b-0">
+        <Card className="border border-b-0 border-gray-300 rounded-none">
         <h1 className="text-center py-2 bg-[#CECBC7] font-medium">CELPIP-GENERAL READING TEST</h1>
           <Table>
             <TableHeader >
-                <TableHead className="text-black text-center">Number of Questions</TableHead>
-                <TableHead className="text-black text-center">Your Score</TableHead>
-                <TableHead className="text-black text-center">Your Approximate CELPIP Score</TableHead>
+                <TableHead className="text-center text-black">Number of Questions</TableHead>
+                <TableHead className="text-center text-black">Your Score</TableHead>
+                <TableHead className="text-center text-black">Your Approximate CELPIP Score</TableHead>
             </TableHeader>
             <TableBody>
               <TableRow>
-                <TableCell className="text-black text-center font-medium">{totalQuestions}</TableCell>
-                <TableCell className="text-black text-center font-medium">{totalScore()}</TableCell>
-                <TableCell className="text-black text-center font-medium">M</TableCell>
+                <TableCell className="font-medium text-center text-black">{totalQuestions}</TableCell>
+                <TableCell className="font-medium text-center text-black">{totalScore()}</TableCell>
+                <TableCell className="font-medium text-center text-black">M</TableCell>
               </TableRow>
             </TableBody>
           </Table>
         </Card>
 
 
-      <Card  className="rounded-none border-2 border-gray-300 bg-customLighGray">
-        <CardHeader className="text-center py-4 font-semibold">A Note About Your CELPIP Score</CardHeader>
+      <Card  className="border-2 border-gray-300 rounded-none bg-customLighGray">
+        <CardHeader className="py-4 font-semibold text-center">A Note About Your CELPIP Score</CardHeader>
         <CardContent>
           <p className="tracking-tight">
-            The score provided here is an estimate based on the <span className="text-customRed hover:underline cursor-pointer">Reading Test
+            The score provided here is an estimate based on the <span className="cursor-pointer text-customBlue hover:underline">Reading Test
             Score Conversion Chart.</span> Each CELPIP test item is field tested and
             reviewed by an expert panel before it is integrated into the
             official test. Since questions may have different levels of

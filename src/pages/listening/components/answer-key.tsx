@@ -23,8 +23,8 @@ export default function ListeningAnswerKeyPage() {
   return (
     <CardLayout title={"Practice Test A - Listening Answer Key"} nextLink={"/listening/result"}>
       <div className="p-4">
-        <Alert className="mb-4 bg-customGray border border-customRed rounded-sm flex gap-2">
-          <Badge className="bg-customRed hover:bg-customRed rounded-full h-fit">
+        <Alert className="flex gap-2 mb-4 border rounded-sm bg-customGray border-customBlue">
+          <Badge className="rounded-full bg-customBlue hover:bg-customBlue h-fit">
             NOTE
           </Badge>
           <AlertDescription className="text-gray-600">
@@ -34,7 +34,7 @@ export default function ListeningAnswerKeyPage() {
           </AlertDescription>
         </Alert>
 
-        <Table className="text-gray-600 text-sm">
+        <Table className="text-sm text-gray-600">
           <TableHeader>
             <TableRow>
               <TableHead>Question</TableHead>
@@ -62,10 +62,10 @@ export default function ListeningAnswerKeyPage() {
 
               return (
                 <>
-                 {prevItem && item.title !== prevItem.title && <div className="my-2 pl-2 text-sm">
+                 {prevItem && item.title !== prevItem.title && <div className="pl-2 my-2 text-sm">
                     <Link
                       to={`/listening/${getActualQuestionIndexListening(listeningData, prevItem.title)?.toString()}`}
-                      className="text-customRed hover:underline"
+                      className="text-customBlue hover:underline"
                     >
                       Return to {prevItem.title}
                     </Link>
@@ -78,7 +78,7 @@ export default function ListeningAnswerKeyPage() {
                         <img
                           src={item.question.correctAnswer}
                           alt="Correct answer"
-                          className="w-24 h-24 object-cover"
+                          className="object-cover w-24 h-24"
                         />
                       ) : (
                         item.question.correctAnswer
@@ -93,19 +93,19 @@ export default function ListeningAnswerKeyPage() {
                             <img
                               src={item.question.choices[answerIndex].image}
                               alt="User answer"
-                              className="w-24 h-24 object-cover"
+                              className="object-cover w-24 h-24"
                             />
                             {isCorrect ? (
                               <CheckIcon
                                 size={20}
-                                className="text-green-500 ml-2 inline-block"
+                                className="inline-block ml-2 text-green-500"
                               />
                             ) : (
                               <>
                                 {answerIndex >= 0 && (
                                   <X
                                     size={20}
-                                    className="text-red-500 ml-2 inline-block"
+                                    className="inline-block ml-2 text-red-500"
                                   />
                                 )}
                               </>
@@ -119,14 +119,14 @@ export default function ListeningAnswerKeyPage() {
                             {isCorrect ? (
                               <CheckIcon
                                 size={20}
-                                className="text-green-500 ml-2 inline-block"
+                                className="inline-block ml-2 text-green-500"
                               />
                             ) : (
                               <>
                                 {answerIndex >= 0 && (
                                   <X
                                     size={20}
-                                    className="text-red-500 ml-2 inline-block"
+                                    className="inline-block ml-2 text-red-500"
                                   />
                                 )}
                               </>
@@ -136,10 +136,10 @@ export default function ListeningAnswerKeyPage() {
                       </div>
                     </TableCell>
                   </TableRow>
-                    {index === data.length - 1 && <div className="my-2 pl-2 text-sm">
+                    {index === data.length - 1 && <div className="pl-2 my-2 text-sm">
                     <Link
                       to={`/listening/${getActualQuestionIndexListening(listeningData, prevItem.title)?.toString()}`}
-                      className="text-customRed hover:underline"
+                      className="text-customBlue hover:underline"
                     >
                       Return to {prevItem.title}
                     </Link>

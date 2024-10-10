@@ -4,14 +4,14 @@ import DropDown from "./components/dropdown";
 
 export default function Home() {
   return (
-    <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <Card className="bg-white shadow overflow-hidden rounded-none border border-gray-300 mx-auto max-w-4xl">
-        <CardHeader className="bg-gray-200 px-4 py-2 font-normal text-gray-600 border-b border-gray-300">
+    <section className="container px-4 py-8 mx-auto sm:px-6 lg:px-8">
+      <Card className="max-w-4xl mx-auto overflow-hidden bg-white border border-gray-300 rounded-none shadow">
+        <CardHeader className="px-4 py-2 font-normal text-gray-600 bg-gray-200 border-b border-gray-300">
           Practice Test A
         </CardHeader>
         <CardContent className="min-h-[80vh]">
-        <div className="p-6 space-y-4 text-gray-600 text-sm">
-          <ol className="list-decimal list-inside space-y-4 mb-16">
+        <div className="p-6 space-y-4 text-sm text-gray-600">
+          <ol className="mb-16 space-y-4 list-decimal list-inside">
             <li>
               You should give yourself 2 hours and 39 minutes to complete
               CELPIP-General Practice Test A. Press Start and select Complete
@@ -20,11 +20,11 @@ export default function Home() {
             </li>
             <li>
               Once you have completed the test, you can consult the{" "}
-              <span className="text-customRed">
+              <span className="text-customBlue">
                 Performance Standards for Writing
               </span>{" "}
               and{" "}
-              <span className="text-customRed">
+              <span className="text-customBlue">
                 Performance Standards for Speaking
               </span>{" "}
               to understand how your responses would be evaluated by CELPIP
@@ -53,10 +53,10 @@ export default function Home() {
           <Separator />
 
           <div
-            className="bg-customGray border border-customRed text-gray-600 text-sm  px-4 py-3 rounded relative"
+            className="relative px-4 py-3 text-sm text-gray-600 border rounded bg-customGray border-customBlue"
             role="alert"
           >
-            <span className="bg-customRed p-1 px-2 rounded-2xl text-white">
+            <span className="p-1 px-2 text-white bg-customBlue rounded-2xl">
               NOTE
             </span>
             <span className="block sm:inline">
@@ -66,12 +66,12 @@ export default function Home() {
               periods of time when study materials do not exactly match the
               current official test format, and content may be updated to match
               changes to the CELPIP Test without prior notice. Check the CELPIP
-              website for any updates to the CELPIP Test: <a href="https://www.celpip.ca" target="_blank" className="text-customRed"> https://www.celpip.ca </a>.
+              website for any updates to the CELPIP Test: <a href="https://www.celpip.ca" target="_blank" className="text-customBlue"> https://www.celpip.ca </a>.
             </span>
           </div>
         </div>
         </CardContent>
-      <CardFooter className="h-8 bg-customGray border-t border-gray-300">
+      <CardFooter className="h-8 border-t border-gray-300 bg-customGray">
 
       </CardFooter>
       </Card>
