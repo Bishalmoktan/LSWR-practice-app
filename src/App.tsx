@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "@/components/layout";
-import Home from "./pages/home/home";
+import Test from "./pages/home/test";
 import VideoInstruction from "./components/video-instruction";
 import listeningTestMockData from "./data/listeningTest";
 import { readingTestMockData } from "./data/readingTest";
@@ -15,6 +15,7 @@ import Reading from "./pages/reading/reading";
 import ListeningResult from "./pages/listening/components/result";
 import ReadingResult from "./pages/reading/components/reading-result-page";
 import Speaking from "./pages/speaking/speaking";
+import Dashboard from "./pages/dashboard";
 
 const router = createBrowserRouter([
   {
@@ -23,7 +24,11 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />,
+        element: <Dashboard />,
+      },
+      {
+        path: "/test",
+        element: <Test />,
       },
 
       {
@@ -93,7 +98,7 @@ const router = createBrowserRouter([
       // Speaking
       {
         path: "/speaking/:sectionId",
-        element: <Speaking />
+        element: <Speaking />,
       },
       {
         path: "/speaking/end-page",

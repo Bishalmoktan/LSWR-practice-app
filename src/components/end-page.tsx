@@ -21,8 +21,9 @@ const data = [
 
 const EndPage = ({ title, nextLink, instructions }: EndPageProps) => {
   const location = useLocation();
-  const isLastPage = location.pathname.includes("speaking");  
+  const isLastPage = location.pathname.includes("speaking");
   const { prevPage } = location.state || {};
+
   return (
     <CardLayout title={title} nextLink={nextLink} prevLink={prevPage}>
       <div className="py-6 px-16  min-h-[75vh]">
@@ -42,7 +43,7 @@ const EndPage = ({ title, nextLink, instructions }: EndPageProps) => {
         {isLastPage && (
           <div>
             <Separator className="my-8" />
-            <div className="flex items-center gap-2 mb-2 font-medium  text-customLightBlue">
+            <div className="flex items-center gap-2 mb-2 font-medium text-customLightBlue">
               <Info />
               <h3 className="">End of Practice Test A</h3>
             </div>
@@ -62,7 +63,7 @@ const EndPage = ({ title, nextLink, instructions }: EndPageProps) => {
             <img src={img} alt="book" className="w-72" />
             <Button
               size="lg"
-              className="px-20 py-2 text-lg text-white rounded-none bg-customBlue hover:bg-customBlue/90"
+              className="px-20 py-2 text-lg text-white bg-customBlue hover:bg-customBlue/90"
             >
               Buy Now
             </Button>

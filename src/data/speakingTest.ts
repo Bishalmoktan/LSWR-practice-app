@@ -165,14 +165,13 @@ Talk to your roommate. Explain why your cousin should be allowed to move in with
     },
   ],
   endPage: {
-    title: "",
+    title: "Practice Test A - End of the Writing Test",
     instruction: [
       `This is the end of the Speaking Test.`,
       `Click here to view the Performance Standards for Speaking.`,
     ],
   },
 };
-
 
 export const speaking: SpeakingTest = {
   type: "Speaking",
@@ -197,7 +196,12 @@ export const speaking: SpeakingTest = {
     },
     {
       title: "Speaking Instructional Video",
-      instructions: [{ video: "https://instructionalproducts.paragontesting.ca/InstructionalProducts/Areas/FreeOnlineSampleTest/Content/video/CELPIP-G_Speaking.mp4" }],
+      instructions: [
+        {
+          video:
+            "https://instructionalproducts.paragontesting.ca/InstructionalProducts/Areas/FreeOnlineSampleTest/Content/video/CELPIP-G_Speaking.mp4",
+        },
+      ],
     },
     {
       title: "Speaking Practice Task",
@@ -320,7 +324,8 @@ export const speaking: SpeakingTest = {
         {
           questions: [
             {
-              question: "Your family is relocating to another area, and you are looking for a new home there. You found two suitable options. Using the pictures and information below, choose the option that you prefer. In the next section, you will need to persuade a family member that your choice is the better choice. If you do not choose an option, the computer will choose one for you. You do not need to speak for this part.",
+              question:
+                "Your family is relocating to another area, and you are looking for a new home there. You found two suitable options. Using the pictures and information below, choose the option that you prefer. In the next section, you will need to persuade a family member that your choice is the better choice. If you do not choose an option, the computer will choose one for you. You do not need to speak for this part.",
               type: "mcq",
               choices: [
                 {

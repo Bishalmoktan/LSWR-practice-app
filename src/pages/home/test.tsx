@@ -2,7 +2,7 @@ import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator";
 import DropDown from "./components/dropdown";
 
-export default function Home() {
+export default function Test() {
   return (
     <section className="container px-4 py-8 mx-auto sm:px-6 lg:px-8">
       <Card className="max-w-4xl mx-auto overflow-hidden bg-white border border-gray-300 rounded-none shadow">
