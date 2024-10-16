@@ -16,8 +16,13 @@ import ListeningResult from "./pages/listening/components/result";
 import ReadingResult from "./pages/reading/components/reading-result-page";
 import Speaking from "./pages/speaking/speaking";
 import Dashboard from "./pages/dashboard";
+import AuthForm from "./pages/auth/auth";
 
 const router = createBrowserRouter([
+  {
+    path: "/auth",
+    element: <AuthForm />,
+  },
   {
     path: "/",
     element: <Layout />,

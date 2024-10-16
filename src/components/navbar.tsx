@@ -12,7 +12,7 @@ const Navabr = () => {
   const navigate = useNavigate();
   const handleChange = () => {
     navigate("/test");
-  }
+  };
   return (
     <header className="bg-white shadow-md">
       <div className="flex items-center justify-between px-4 py-2 lg:px-6">
@@ -24,25 +24,20 @@ const Navabr = () => {
               className="object-cover mr-2 w-80"
             />
           </Link>
-          
         </div>
         <div className="items-center flex-1 hidden gap-2 md:flex ">
-          <p className="text-sm text-[#262161] font-semibold">Selected Product: </p>
+          <p className="text-sm text-[#262161] font-semibold">
+            Selected Product:{" "}
+          </p>
           <Select onValueChange={handleChange}>
             <SelectTrigger className="w-fit">
               <SelectValue placeholder="Click to Select Product" />
             </SelectTrigger>
             <SelectContent className="">
-              <SelectItem
-                value="practice-test"
-                className=""
-              >
+              <SelectItem value="practice-test" className="">
                 FREE CELPIP-GENERAL PRACTICE TESTS (STARTER SET)
               </SelectItem>
-              <SelectItem
-                value="ls-practice-test"
-                className=""
-              >
+              <SelectItem value="ls-practice-test" className="">
                 FREE CELPIP-GENERAL LS PRACTICE TESTS (STARTER SET)
               </SelectItem>
             </SelectContent>
@@ -54,7 +49,9 @@ const Navabr = () => {
             className="text-white bg-customBlue hover:bg-customBlue/90 hover:text-white"
             aria-label="Sign in"
           >
-            <span className="transition duration-200">SIGN IN</span>
+            <Link to={"/auth"}>
+              <span className="transition duration-200">SIGN IN</span>
+            </Link>
           </Button>
         </div>
       </div>
