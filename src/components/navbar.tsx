@@ -6,12 +6,28 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useAuth } from "@/context/AuthContext";
+import { getAllTests } from "@/services/testService";
+import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 const Navabr = () => {
+  const { isAuthenticated, logout } = useAuth();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    getAllTests();
+  }, []);
+
   const handleChange = () => {
     navigate("/test");
+  };
+
+  const handleLogout = () => {
+    toast.success("Logout successful");
+    navigate("/auth");
+    logout();
   };
   return (
     <header className="bg-white shadow-md">
@@ -44,15 +60,19 @@ const Navabr = () => {
           </Select>
         </div>
         <div className="flex justify-end flex-1">
-          <Button
-            variant="ghost"
-            className="text-white bg-customBlue hover:bg-customBlue/90 hover:text-white"
-            aria-label="Sign in"
-          >
-            <Link to={"/auth"}>
-              <span className="transition duration-200">SIGN IN</span>
-            </Link>
-          </Button>
+          {!isAuthenticated ? (
+            <Button
+              variant="ghost"
+              className="text-white bg-customBlue hover:bg-customBlue/90 hover:text-white"
+              aria-label="Sign in"
+            >
+              <Link to={"/auth"}>
+                <span className="transition duration-200">SIGN IN</span>
+              </Link>
+            </Button>
+          ) : (
+            <Button onClick={handleLogout}>Logout</Button>
+          )}
         </div>
       </div>
     </header>

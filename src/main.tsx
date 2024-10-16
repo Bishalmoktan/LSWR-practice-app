@@ -6,19 +6,24 @@ import { ListeningProvider } from "./context/ListeningContext.tsx";
 import { ReadingProvider } from "./context/ReadingContext.tsx";
 import { WritingProvider } from "./context/WritingContext.tsx";
 import { SpeakingProvider } from "./context/SpeakingContext.tsx";
+import { AuthProvider } from "./context/AuthContext.tsx";
+import { Toaster } from "sonner";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <ListeningProvider>
-      <ReadingProvider>
-        <WritingProvider>
-          <ReadingProvider>
-            <SpeakingProvider>
-              <App />
-            </SpeakingProvider>
-          </ReadingProvider>
-        </WritingProvider>
-      </ReadingProvider>
-    </ListeningProvider>
+    <AuthProvider>
+      <ListeningProvider>
+        <ReadingProvider>
+          <WritingProvider>
+            <ReadingProvider>
+              <SpeakingProvider>
+                <App />
+                <Toaster richColors />
+              </SpeakingProvider>
+            </ReadingProvider>
+          </WritingProvider>
+        </ReadingProvider>
+      </ListeningProvider>
+    </AuthProvider>
   </StrictMode>
 );
