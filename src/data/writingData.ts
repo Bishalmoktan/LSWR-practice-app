@@ -1,8 +1,6 @@
-import { WritingTest } from "@/types/writing";
-
-export const writingData: WritingTest = {
+export const writingData = {
   type: "Writing",
-  structure: [
+  pages: [
     {
       title: "Writing Test",
       instructions: [
@@ -17,7 +15,12 @@ export const writingData: WritingTest = {
     },
     {
       title: "Writing Instructional Video",
-      instructions: [{ video: "https://instructionalproducts.paragontesting.ca/InstructionalProducts/Areas/FreeOnlineSampleTest/Content/video/CELPIP-G_Writing.mp4" }],
+      instructions: [
+        {
+          video:
+            "https://instructionalproducts.paragontesting.ca/InstructionalProducts/Areas/FreeOnlineSampleTest/Content/video/CELPIP-G_Writing.mp4",
+        },
+      ],
     },
     {
       title: "Writing Task 1: Writing an Email",
@@ -80,6 +83,4 @@ export const writingData: WritingTest = {
   ],
 };
 
-export const writingEndPage = {
-  
-}
+export const writingEndPage = {};

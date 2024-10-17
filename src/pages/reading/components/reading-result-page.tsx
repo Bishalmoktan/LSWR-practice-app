@@ -14,6 +14,7 @@ import { useReadingContext } from "@/context/ReadingContext";
 
 const ReadingResult = () => {
   const { userAnswers, readingData } = useReadingContext();
+  if (!readingData) return <div>Loading...</div>;
   const questions = flattenReadingTest(readingData);
   const totalQuestions = questions.length;
   const totalScore = () => {

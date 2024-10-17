@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import {  Choice, MCQQuestion } from "@/types/speaking";
+import { Choice, MCQQuestion } from "@/types/speaking";
 import { useEffect, useState, useRef } from "react";
 import Timer from "./timer";
 import { cn } from "@/lib/utils";
@@ -17,7 +17,7 @@ export default function ComparingImage({
   prepartionTime,
   recordingTime,
   selectionTime,
-  comparison
+  comparison,
 }: ComparingImageProps) {
   const [image1, setImage1] = useState(question.choices[0]);
   const [image2, setImage2] = useState(question.choices[1]);
@@ -38,7 +38,7 @@ export default function ComparingImage({
           } else {
             setImage2(image1);
           }
-          if(comparison){
+          if (comparison) {
             setImage1(comparison);
           }
 
@@ -61,7 +61,7 @@ export default function ComparingImage({
         </span>
         {isPreparationPhase ? (
           <>
-            <span>{question.question}</span>
+            <span>{question.text}</span>
           </>
         ) : (
           <span>{comparison?.info}</span>
@@ -120,7 +120,7 @@ export default function ComparingImage({
             />
             <h3 className="text-sm text-gray-600">{image2.title}</h3>
             <div className="whitespace-pre-wrap  text-sm mt-4 list-inside text-gray-600">
-             {image1.text}
+              {image1.text}
             </div>
           </CardContent>
         </Card>

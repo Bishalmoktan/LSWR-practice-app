@@ -3,7 +3,6 @@ import house1 from "@/assets/speaking/house-1.png";
 import house2 from "@/assets/speaking/house-2.png";
 import house3 from "@/assets/speaking/house-3.png";
 import table from "@/assets/speaking/table.png";
-import { SpeakingTest } from "@/types/speaking";
 
 export const speakingTestData = {
   testName: "Practice Test A - Speaking Test",
@@ -173,9 +172,9 @@ Talk to your roommate. Explain why your cousin should be allowed to move in with
   },
 };
 
-export const speaking: SpeakingTest = {
+export const speaking = {
   type: "Speaking",
-  structure: [
+  pages: [
     {
       title: "Speaking Test",
       instructions: [

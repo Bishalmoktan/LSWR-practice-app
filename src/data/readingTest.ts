@@ -4,7 +4,6 @@ import train from "../assets/reading/train.png";
 import car from "../assets/reading/car.png";
 import plane from "../assets/reading/plane.png";
 import bus from "../assets/reading/bus.png";
-import { ReadingTest } from "@/types/reading";
 
 export const readingTestMockData = {
   testName: "Practice Test A - Reading Test",
@@ -531,7 +530,7 @@ It turns out Ms. Epstein’s reaction is a common misconception. As Dr. John Rat
   },
 };
 
-export const reading: ReadingTest = {
+export const reading = {
   type: "Reading",
   structure: [
     {

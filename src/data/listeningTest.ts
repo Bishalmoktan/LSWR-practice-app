@@ -1,4 +1,3 @@
-import { ListeningTest } from "@/types/listening";
 import op1 from "../assets/listening/q1-o1.png";
 import op2 from "../assets/listening/q1-o2.png";
 import op3 from "../assets/listening/q1-o3.png";
@@ -517,8 +516,7 @@ const listeningTestMockData = {
       sections: [
         {
           sectionNumber: 1,
-          title:
-            "Practice Test A - Listening Part 4: Listening to a News Item",
+          title: "Practice Test A - Listening Part 4: Listening to a News Item",
           audioUrl:
             "https://instructionalproducts.paragontesting.ca/InstructionalProducts/Areas/FreeOnlineSampleTest/Content/audio/PT2L5.ogg",
           audioInfo:
@@ -787,8 +785,7 @@ const listeningTestMockData = {
       sections: [
         {
           sectionNumber: 1,
-          title:
-            "Practice Test A - Listening Part 6: Listening for Viewpoints",
+          title: "Practice Test A - Listening Part 6: Listening for Viewpoints",
           audioUrl:
             "https://instructionalproducts.paragontesting.ca/InstructionalProducts/Areas/FreeOnlineSampleTest/Content/audio/PT2L6.ogg",
           audioInfo:
@@ -992,9 +989,9 @@ const listeningTestMockData = {
   },
 };
 
-export const listening : ListeningTest = {
+export const listening = {
   type: "Listening",
-  structure: [
+  pages: [
     {
       title: "Listening Test",
       instructions: [
@@ -1019,7 +1016,8 @@ export const listening : ListeningTest = {
       title: "Listening Instructional Video",
       instructions: [
         {
-          video: "https://instructionalproducts.paragontesting.ca/InstructionalProducts/Areas/FreeOnlineSampleTest/Content/video/CELPIP-G_Listening.mp4",
+          video:
+            "https://instructionalproducts.paragontesting.ca/InstructionalProducts/Areas/FreeOnlineSampleTest/Content/video/CELPIP-G_Listening.mp4",
         },
       ],
     },
@@ -1080,7 +1078,8 @@ export const listening : ListeningTest = {
           text: "Choose the best answer to each question.",
         },
         {
-          audio: "https://instructionalproducts.paragontesting.ca/InstructionalProducts/Areas/FreeOnlineSampleTest/Content/audio/NL1_Instructions.mp3",
+          audio:
+            "https://instructionalproducts.paragontesting.ca/InstructionalProducts/Areas/FreeOnlineSampleTest/Content/audio/NL1_Instructions.mp3",
         },
       ],
     },
@@ -1098,12 +1097,14 @@ export const listening : ListeningTest = {
     },
     {
       title: "Listening Part 1: Listening to Problem Solving",
-      description: "Listen to the conversation. You will hear the conversation only once. It is about 1 to 1.5 minutes long.:",
+      description:
+        "Listen to the conversation. You will hear the conversation only once. It is about 1 to 1.5 minutes long.:",
       instructions: [
         {
-          audio: "https://instructionalproducts.paragontesting.ca/InstructionalProducts/Areas/FreeOnlineSampleTest/Content/audio/nl1_c1_playground.ogg",
+          audio:
+            "https://instructionalproducts.paragontesting.ca/InstructionalProducts/Areas/FreeOnlineSampleTest/Content/audio/nl1_c1_playground.ogg",
         },
-      ]
+      ],
     },
     {
       title: "Listening Part 1: Listening to Problem Solving",
@@ -1239,7 +1240,8 @@ export const listening : ListeningTest = {
         "Listen to the conversation. You will hear the conversation only once. It is about 1 to 1.5 minutes long.",
       instructions: [
         {
-          audio: "https://instructionalproducts.paragontesting.ca/InstructionalProducts/Areas/FreeOnlineSampleTest/Content/audio/nl1_c2_playground.ogg",
+          audio:
+            "https://instructionalproducts.paragontesting.ca/InstructionalProducts/Areas/FreeOnlineSampleTest/Content/audio/nl1_c2_playground.ogg",
         },
       ],
     },
@@ -1378,7 +1380,8 @@ export const listening : ListeningTest = {
         "Listen to the conversation. You will hear the conversation only once. It is about 1 to 1.5 minutes long.",
       instructions: [
         {
-          audio: "https://instructionalproducts.paragontesting.ca/InstructionalProducts/Areas/FreeOnlineSampleTest/Content/audio/nl1_c3_playground.ogg",
+          audio:
+            "https://instructionalproducts.paragontesting.ca/InstructionalProducts/Areas/FreeOnlineSampleTest/Content/audio/nl1_c3_playground.ogg",
         },
       ],
     },
@@ -1478,7 +1481,8 @@ export const listening : ListeningTest = {
           text: "Choose the best answer to each question.",
         },
         {
-          audio: "https://instructionalproducts.paragontesting.ca/InstructionalProducts/Areas/FreeOnlineSampleTest/Content/audio/L3_Instructions.mp3",
+          audio:
+            "https://instructionalproducts.paragontesting.ca/InstructionalProducts/Areas/FreeOnlineSampleTest/Content/audio/L3_Instructions.mp3",
         },
       ],
     },
@@ -1497,7 +1501,8 @@ export const listening : ListeningTest = {
         "Listen to the conversation. You will hear the conversation only once. It is about 1.5 to 2 minutes long.",
       instructions: [
         {
-          audio: "https://instructionalproducts.paragontesting.ca/InstructionalProducts/Areas/FreeOnlineSampleTest/Content/audio/PT2L3_C.ogg",
+          audio:
+            "https://instructionalproducts.paragontesting.ca/InstructionalProducts/Areas/FreeOnlineSampleTest/Content/audio/PT2L3_C.ogg",
         },
       ],
     },
@@ -1691,7 +1696,10 @@ export const listening : ListeningTest = {
           text: "Listen to each question. You will hear the question only once.",
         },
         { text: "Choose the best answer to each question." },
-        { audio: "https://instructionalproducts.paragontesting.ca/InstructionalProducts/Areas/FreeOnlineSampleTest/Content/audio/L4_Instructions.mp3" },
+        {
+          audio:
+            "https://instructionalproducts.paragontesting.ca/InstructionalProducts/Areas/FreeOnlineSampleTest/Content/audio/L4_Instructions.mp3",
+        },
       ],
     },
     {
@@ -1707,7 +1715,12 @@ export const listening : ListeningTest = {
       title: "Listening Part 3: Listening for Information",
       description:
         "Listen to the conversation. You will hear the conversation only once. It is about 2 to 2.5 minutes long.",
-      instructions: [{ audio: "https://instructionalproducts.paragontesting.ca/InstructionalProducts/Areas/FreeOnlineSampleTest/Content/audio/PT2L4_C.ogg" }],
+      instructions: [
+        {
+          audio:
+            "https://instructionalproducts.paragontesting.ca/InstructionalProducts/Areas/FreeOnlineSampleTest/Content/audio/PT2L4_C.ogg",
+        },
+      ],
     },
     {
       title: "Listening Part 3: Listening for Information",
@@ -1717,11 +1730,11 @@ export const listening : ListeningTest = {
       duration: 30,
       questionSets: [
         {
-          // correct 
+          // correct
           instructions: [
             {
-              text:"Choose the best answer to each question."
-            }
+              text: "Choose the best answer to each question.",
+            },
           ],
           questions: [
             {
@@ -1935,7 +1948,10 @@ export const listening : ListeningTest = {
         {
           text: "Choose the best way to complete each statement from the drop-down menu.",
         },
-        { audio: "https://instructionalproducts.paragontesting.ca/InstructionalProducts/Areas/FreeOnlineSampleTest/Content/audio/L5_Instructions.mp3" },
+        {
+          audio:
+            "https://instructionalproducts.paragontesting.ca/InstructionalProducts/Areas/FreeOnlineSampleTest/Content/audio/L5_Instructions.mp3",
+        },
       ],
     },
     {
@@ -1949,7 +1965,12 @@ export const listening : ListeningTest = {
       title: "Listening Part 4: Listening to a News Item",
       description:
         "Listen to the conversation. You will hear the conversation only once. It is about 1 to 1.5 minutes long.",
-      instructions: [{ audio: "https://instructionalproducts.paragontesting.ca/InstructionalProducts/Areas/FreeOnlineSampleTest/Content/audio/PT2L5.ogg" }],
+      instructions: [
+        {
+          audio:
+            "https://instructionalproducts.paragontesting.ca/InstructionalProducts/Areas/FreeOnlineSampleTest/Content/audio/PT2L5.ogg",
+        },
+      ],
     },
     {
       title: "Listening Part 4: Listening to a News Item",
@@ -2071,7 +2092,10 @@ export const listening : ListeningTest = {
           text: "You will watch a 2-minute video. Then 8 questions will appear.",
         },
         { text: "Choose the best way to answer each question." },
-        { audio: "https://instructionalproducts.paragontesting.ca/InstructionalProducts/Areas/FreeOnlineSampleTest/Content/audio/NL5_Instructions.mp3" },
+        {
+          audio:
+            "https://instructionalproducts.paragontesting.ca/InstructionalProducts/Areas/FreeOnlineSampleTest/Content/audio/NL5_Instructions.mp3",
+        },
       ],
     },
     {
@@ -2087,7 +2111,12 @@ export const listening : ListeningTest = {
       title: "Listening Part 5: Listening to a Discussion",
       description:
         "Watch the discussion. You will watch the discussion only once. It is about 1.5 to 2 minutes long.",
-      instructions: [{ video: "https://instructionalproducts.paragontesting.ca/InstructionalProducts/Areas/FreeOnlineSampleTest/Content/video/NL5_LanguageExchangeVideo.mp4" }],
+      instructions: [
+        {
+          video:
+            "https://instructionalproducts.paragontesting.ca/InstructionalProducts/Areas/FreeOnlineSampleTest/Content/video/NL5_LanguageExchangeVideo.mp4",
+        },
+      ],
     },
     {
       title: "Listening Part 5: Listening to a Discussion",
@@ -2271,7 +2300,10 @@ export const listening : ListeningTest = {
         {
           text: "Choose the best way to answer each question from the drop-down menu.",
         },
-        { audio: "https://instructionalproducts.paragontesting.ca/InstructionalProducts/Areas/FreeOnlineSampleTest/Content/audio/L6_Instructions.mp3" },
+        {
+          audio:
+            "https://instructionalproducts.paragontesting.ca/InstructionalProducts/Areas/FreeOnlineSampleTest/Content/audio/L6_Instructions.mp3",
+        },
       ],
     },
     {
@@ -2287,7 +2319,12 @@ export const listening : ListeningTest = {
       title: "Listening Part 6: Listening for Viewpoints",
       description:
         "Listen to the following report. You will hear the report only once. It is about 3 minutes long.",
-      instructions: [{ audio: "https://instructionalproducts.paragontesting.ca/InstructionalProducts/Areas/FreeOnlineSampleTest/Content/audio/PT2L6.ogg" }],
+      instructions: [
+        {
+          audio:
+            "https://instructionalproducts.paragontesting.ca/InstructionalProducts/Areas/FreeOnlineSampleTest/Content/audio/PT2L6.ogg",
+        },
+      ],
     },
     {
       title: "Listening Part 6: Listening for Viewpoints",
@@ -2423,6 +2460,5 @@ export const listening : ListeningTest = {
     },
   ],
 };
-
 
 export default listeningTestMockData;
