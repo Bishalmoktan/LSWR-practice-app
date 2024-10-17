@@ -8,22 +8,25 @@ import { WritingProvider } from "./context/WritingContext.tsx";
 import { SpeakingProvider } from "./context/SpeakingContext.tsx";
 import { AuthProvider } from "./context/AuthContext.tsx";
 import { Toaster } from "sonner";
+import { TestProvider } from "./context/TestContext.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <AuthProvider>
-      <ListeningProvider>
-        <ReadingProvider>
-          <WritingProvider>
-            <ReadingProvider>
-              <SpeakingProvider>
-                <App />
-                <Toaster richColors />
-              </SpeakingProvider>
-            </ReadingProvider>
-          </WritingProvider>
-        </ReadingProvider>
-      </ListeningProvider>
+      <TestProvider>
+        <ListeningProvider>
+          <ReadingProvider>
+            <WritingProvider>
+              <ReadingProvider>
+                <SpeakingProvider>
+                  <App />
+                  <Toaster richColors />
+                </SpeakingProvider>
+              </ReadingProvider>
+            </WritingProvider>
+          </ReadingProvider>
+        </ListeningProvider>
+      </TestProvider>
     </AuthProvider>
   </StrictMode>
 );

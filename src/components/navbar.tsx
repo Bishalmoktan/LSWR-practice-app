@@ -7,21 +7,27 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useAuth } from "@/context/AuthContext";
+import { useTestContext } from "@/context/TestContext";
 import { getAllTests } from "@/services/testService";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
-const Navabr = () => {
+const Navbar = () => {
   const { isAuthenticated, logout } = useAuth();
+  const { tests, setCurrentTest } = useTestContext();
   const navigate = useNavigate();
 
   useEffect(() => {
     getAllTests();
   }, []);
 
-  const handleChange = () => {
-    navigate("/test");
+  const handleChange = (id: string) => {
+    const currentTest = tests?.find((test) => test?._id === id) && tests[0];
+    if (currentTest) {
+      setCurrentTest(currentTest);
+      console.log(currentTest);
+    }
   };
 
   const handleLogout = () => {
@@ -29,6 +35,16 @@ const Navabr = () => {
     navigate("/auth");
     logout();
   };
+
+  const testItems = useMemo(
+    () =>
+      tests?.map((test) => (
+        <SelectItem key={test._id} value={test._id}>
+          {test.title}
+        </SelectItem>
+      )),
+    [tests]
+  );
   return (
     <header className="bg-white shadow-md">
       <div className="flex items-center justify-between px-4 py-2 lg:px-6">
@@ -49,14 +65,7 @@ const Navabr = () => {
             <SelectTrigger className="w-fit">
               <SelectValue placeholder="Click to Select Product" />
             </SelectTrigger>
-            <SelectContent className="">
-              <SelectItem value="practice-test" className="">
-                FREE CELPIP-GENERAL PRACTICE TESTS (STARTER SET)
-              </SelectItem>
-              <SelectItem value="ls-practice-test" className="">
-                FREE CELPIP-GENERAL LS PRACTICE TESTS (STARTER SET)
-              </SelectItem>
-            </SelectContent>
+            <SelectContent className="">{testItems}</SelectContent>
           </Select>
         </div>
         <div className="flex justify-end flex-1">
@@ -78,4 +87,4 @@ const Navabr = () => {
     </header>
   );
 };
-export default Navabr;
+export default Navbar;
