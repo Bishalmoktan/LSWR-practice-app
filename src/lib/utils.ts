@@ -15,7 +15,7 @@ export function countQuestionsBySectionTitle(
 ): number {
   let totalQuestions = 0;
 
-  test.structure.forEach((section) => {
+  test.pages.forEach((section) => {
     if (section.title === title && section.questionSets) {
       totalQuestions += 1;
     }
@@ -30,7 +30,7 @@ export function getQuestionIndex(
   audioUrl: string
 ): number | null {
   let currentIndex = 0;
-  for (const section of test.structure) {
+  for (const section of test.pages) {
     if (section.questionSets && section.title === sectionTitle) {
       currentIndex++;
       if (section.questionSets[0].questions[0].text === audioUrl) {
@@ -48,7 +48,7 @@ export function flattenListeningTest(test: ListeningTest) {
     question: Question;
   }[] = [];
 
-  test.structure.forEach((section) => {
+  test.pages.forEach((section) => {
     section.questionSets?.forEach((questionSet) => {
       questionSet.questions.forEach((question) => {
         flatQuestions.push({ title: section.title, question });
@@ -65,7 +65,7 @@ export function flattenReadingTest(test: ReadingTest) {
     question: ReadingQuestion;
   }[] = [];
 
-  test.structure.forEach((section) => {
+  test.pages.forEach((section) => {
     section.questionSets?.forEach((questionSet) => {
       questionSet.questions.forEach((question) => {
         flatQuestions.push({ title: section.title, question });
@@ -84,11 +84,14 @@ export function getFlattenedQuestionIndexListening(
   const flatQuestions = flattenListeningTest(test);
   let ansIndex = null;
   flatQuestions.forEach((question, index) => {
-    if(question.title === sectionTitle && question.question.text === audioUrl){
+    if (
+      question.title === sectionTitle &&
+      question.question.text === audioUrl
+    ) {
       ansIndex = index;
       return;
     }
-  })
+  });
   return ansIndex;
 }
 
@@ -99,11 +102,11 @@ export function getFlattenedQuestionIndexReading(
   const flatQuestions = flattenReadingTest(test);
   let ansIndex = null;
   flatQuestions.forEach((question, index) => {
-    if(question.question.question === questionText){
+    if (question.question.text === questionText) {
       ansIndex = index;
       return;
     }
-  })
+  });
   return ansIndex;
 }
 
@@ -112,7 +115,7 @@ export function getActualQuestionIndexListening(
   sectionTitle: string
 ): number | null {
   let currentIndex = 0;
-  for (const section of test.structure) {
+  for (const section of test.pages) {
     currentIndex++;
     if (section.questionSets && section.title === sectionTitle) {
       return currentIndex - 1;
@@ -127,7 +130,7 @@ export function getActualQuestionIndexReading(
   sectionTitle: string
 ): number | null {
   let currentIndex = 0;
-  for (const section of test.structure) {
+  for (const section of test.pages) {
     currentIndex++;
     if (section.questionSets && section.title === sectionTitle) {
       return currentIndex;
@@ -185,4 +188,3 @@ export function getNextExerciseId(currentExerciseId: string): string | null {
 
 //   return null;
 // }
-

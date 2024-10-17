@@ -26,6 +26,7 @@ const QuestionnaireComponent = ({
     questionText: string,
     options: Choice[]
   ) => {
+    if (!listeningData) return <div>Loading...</div>;
     const questionIndex = getFlattenedQuestionIndexListening(
       listeningData,
       sectionTitle,
@@ -51,7 +52,7 @@ const QuestionnaireComponent = ({
         {questions.map((question, index) => (
           <li
             key={index}
-            className="flex items-center gap-2 text-gray-600 text-sm"
+            className="flex items-center gap-2 text-sm text-gray-600"
           >
             <span className="">{index + 1}.</span>
             <span className="">{question.text}</span>
@@ -60,7 +61,7 @@ const QuestionnaireComponent = ({
                 handleChange(value, question.text, question.choices!)
               }
             >
-              <SelectTrigger className="min-w-20 w-fit rounded-none border-none bg-white font-semibold text-xl focus:outline-none focus:ring-0">
+              <SelectTrigger className="text-xl font-semibold bg-white border-none rounded-none min-w-20 w-fit focus:outline-none focus:ring-0">
                 <SelectValue placeholder="" />
               </SelectTrigger>
               <SelectContent>

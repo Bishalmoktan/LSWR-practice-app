@@ -26,7 +26,6 @@ const Navbar = () => {
     const currentTest = tests?.find((test) => test?._id === id) && tests[0];
     if (currentTest) {
       setCurrentTest(currentTest);
-      console.log(currentTest);
     }
   };
 

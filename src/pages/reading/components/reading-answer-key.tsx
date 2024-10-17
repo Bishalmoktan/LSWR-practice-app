@@ -16,6 +16,7 @@ import { useReadingContext } from "@/context/ReadingContext";
 
 export default function ReadingAnswerKeyPage() {
   const { readingData, userAnswers } = useReadingContext();
+  if (!readingData) return <div>Loading...</div>;
   const data = flattenReadingTest(readingData);
   let currentIndex = 1;
   return (
@@ -46,7 +47,7 @@ export default function ReadingAnswerKeyPage() {
             {data.map((item, index) => {
               const answerIndex = userAnswers[index];
               const userAnswer =
-                item.question.choices && item.question.choices[answerIndex];
+                item.question.choices && item.question.choices?.[answerIndex];
 
               const correctAnswer = item.question.correctAnswer;
               let isCorrect = false;
@@ -73,31 +74,29 @@ export default function ReadingAnswerKeyPage() {
                   )}
                   <TableRow key={`demo-${index}`}>
                     <TableCell>{`${item.title}- Q${currentIndex++}`}</TableCell>
-                    <TableCell>                      
-                        {item.question.correctAnswer}
-                    </TableCell>
+                    <TableCell>{item.question.correctAnswer}</TableCell>
                     <TableCell className="">
                       <div className="flex justify-between">
-                          <>
-                            {answerIndex >= 0 &&
-                              item.question.choices &&
-                              item.question.choices[answerIndex].text}
-                            {isCorrect ? (
-                              <CheckIcon
-                                size={20}
-                                className="inline-block ml-2 text-green-500"
-                              />
-                            ) : (
-                              <>
-                                {answerIndex >= 0 && (
-                                  <X
-                                    size={20}
-                                    className="inline-block ml-2 text-red-500"
-                                  />
-                                )}
-                              </>
-                            )}
-                          </>
+                        <>
+                          {answerIndex >= 0 &&
+                            item.question.choices &&
+                            item.question.choices?.[answerIndex]?.text}
+                          {isCorrect ? (
+                            <CheckIcon
+                              size={20}
+                              className="inline-block ml-2 text-green-500"
+                            />
+                          ) : (
+                            <>
+                              {answerIndex >= 0 && (
+                                <X
+                                  size={20}
+                                  className="inline-block ml-2 text-red-500"
+                                />
+                              )}
+                            </>
+                          )}
+                        </>
                       </div>
                     </TableCell>
                   </TableRow>

@@ -1,6 +1,6 @@
 export type WritingTest = {
   type: string;
-  structure: Array<{
+  pages: Array<{
     title: string;
     instructions: Array<{
       text?: string;
@@ -10,9 +10,9 @@ export type WritingTest = {
     description?: string;
     note?: string;
     questionSets?: Array<{
+      instructions?: Array<{ text: string }>;
       questions: Array<{
-        question: string;
-        instructions?: Array<{ text: string }>;
+        text: string;
         type: "simple" | "mcq";
         score: number;
         choices?: Array<{ text: string }>;
@@ -21,5 +21,3 @@ export type WritingTest = {
     }>;
   }>;
 };
-
-

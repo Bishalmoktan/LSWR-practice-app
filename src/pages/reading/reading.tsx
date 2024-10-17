@@ -15,8 +15,7 @@ export default function Reading() {
   const { readingData } = useReadingContext();
 
   const id = parseInt(sectionId!);
-  const section = readingData.structure[id - 1];
-
+  const section = readingData?.pages[id - 1];
   if (!section) {
     return (
       <Navigate
@@ -63,12 +62,14 @@ export default function Reading() {
           section.instructions[0].text && (
             <InstructionHeader text={section.instructions[0].text!} />
           )}
-        {section.instructions && section.instructions[0].video && (
-          <InstructionVideo
-            description={section.description || undefined}
-            videoSrc={section.instructions[0].video}
-          />
-        )}
+        {section.instructions &&
+          section.instructions.length > 0 &&
+          section.instructions?.[0].video && (
+            <InstructionVideo
+              description={section.description || undefined}
+              videoSrc={section.instructions?.[0].video}
+            />
+          )}
         {section.instructions && section.instructions.length > 1 && (
           <InstructionItem instructions={section.instructions.slice(1)} />
         )}
@@ -78,7 +79,10 @@ export default function Reading() {
             <ReadingPassage
               content={section.description || ""}
               passageInfo={
-                (section.instructions && section.instructions[0].text)
+                (section.instructions &&
+                  section.instructions.length > 0 &&
+                  section.instructions?.[0].text) ||
+                ""
               }
             />
             <div className="p-4 space-y-6 border-l border-gray-300 bg-customSkyBlue h-[75vh] overflow-y-scroll">
@@ -86,7 +90,7 @@ export default function Reading() {
                 <QuestionSet
                   key={index}
                   questions={question.questions}
-                  questionInfo={question.instructions[0].text || ""}
+                  questionInfo={question.instructions?.[0]?.text || ""}
                 />
               ))}
             </div>

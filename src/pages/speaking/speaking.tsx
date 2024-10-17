@@ -14,8 +14,10 @@ export default function Speaking() {
 
   const { speakingData } = useSpeakingContext();
 
+  if (!speakingData) return <div>Loading...</div>;
+
   const id = parseInt(sectionId!);
-  const section = speakingData.structure[id - 1];
+  const section = speakingData.pages[id - 1];
 
   if (!section) {
     return (
@@ -44,18 +46,21 @@ export default function Speaking() {
           section.instructions[0].text && (
             <InsructionHeader text={section.instructions[0].text!} />
           )}
-        {section.instructions && section.instructions[0].video && (
-          <InstructionVideo videoSrc={section.instructions[0].video} />
-        )}
+        {section.instructions &&
+          section.instructions &&
+          section.instructions.length > 0 &&
+          section.instructions?.[0].video && (
+            <InstructionVideo videoSrc={section.instructions[0].video} />
+          )}
         {section.instructions && section.instructions.length > 1 && (
           <InstructionItem instructions={section.instructions.slice(1)} />
         )}
 
         {section.description && section.questionSets && (
           <>
-            <div className="py-6 px-8">
+            <div className="px-8 py-6">
               <DescribingImage
-                title={section.questionSets[0].questions[0].question}
+                title={section.questionSets[0].questions[0].text}
                 preparationTime={section.prepTime!}
                 recordingTime={section.recordingTime!}
                 imageUrl={section.description}
@@ -67,12 +72,15 @@ export default function Speaking() {
         {section.questionSets &&
           section.questionSets[0].questions[0].type === "mcq" && (
             <>
-              <div className="py-6 px-8">
+              <div className="px-8 py-6">
                 <ComparingImage
                   prepartionTime={section.prepTime!}
                   recordingTime={section.recordingTime!}
                   selectionTime={section.prepTime!}
-                  comparison={section?.questionSets[0]?.questions[0]?.defaultAnswer?.choice}
+                  comparison={
+                    section?.questionSets[0]?.questions[0]?.defaultAnswer
+                      ?.choice
+                  }
                   question={section.questionSets[0].questions[0]}
                 />
               </div>
@@ -83,13 +91,13 @@ export default function Speaking() {
           section.questionSets &&
           section.questionSets[0].questions[0].type === "simple" && (
             <>
-              <div className="py-6 px-8">
+              <div className="px-8 py-6">
                 <SpeakingTest
                   preparationTime={section.prepTime!}
                   recordingTime={
                     section.recordingTime ? section.recordingTime : 0
                   }
-                  title={section.questionSets[0].questions[0].question}
+                  title={section.questionSets[0].questions[0].text}
                 />
               </div>
             </>

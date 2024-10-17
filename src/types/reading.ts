@@ -8,8 +8,8 @@ export interface Choice {
 }
 
 export interface Question {
-  question: string;
-  type: 'mcq'; 
+  text: string;
+  type: "mcq";
   choices: Choice[];
   correctAnswer: string;
   score: number;
@@ -29,6 +29,6 @@ interface TestSection {
 }
 
 export interface ReadingTest {
-  type: 'Reading';
-  structure: TestSection[];
+  type: "Reading";
+  pages: TestSection[];
 }

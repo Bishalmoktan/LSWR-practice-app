@@ -15,7 +15,7 @@ interface DropdownSelectProps {
 
 export const DropdownSelect: React.FC<DropdownSelectProps> = ({ question }) => {
   const { setUserAnswer, readingData } = useReadingContext();
-
+  if (!readingData) return <div>Loading....</div>;
   const handleChange = (
     value: string,
     questionText: string,
@@ -33,7 +33,7 @@ export const DropdownSelect: React.FC<DropdownSelectProps> = ({ question }) => {
   return (
     <Select
       onValueChange={(value) =>
-        handleChange(value, question.question, question.choices)
+        handleChange(value, question.text, question.choices)
       }
     >
       <SelectTrigger

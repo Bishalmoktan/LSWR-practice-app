@@ -11,22 +11,22 @@ interface Choice {
 }
 
 interface BaseQuestion {
-  question: string;
+  text: string;
   score?: number;
-  type: 'simple' | 'mcq';
+  type: "simple" | "mcq";
 }
 
 interface SimpleQuestion extends BaseQuestion {
-  type: 'simple';
+  type: "simple";
 }
 
 interface MCQQuestion extends BaseQuestion {
-  type: 'mcq';
+  type: "mcq";
   choices: Choice[];
   defaultAnswer?: {
     text: string;
-    choice: Choice
-  }
+    choice: Choice;
+  };
 }
 
 type Question = SimpleQuestion | MCQQuestion;
@@ -48,18 +48,17 @@ interface TestSection {
 }
 
 interface SpeakingTest {
-  type: 'Speaking';
-  structure: TestSection[];
+  type: "Speaking";
+  pages: TestSection[];
 }
 
-
-export type { 
-  SpeakingTest, 
-  TestSection, 
-  QuestionSet, 
-  Question, 
-  SimpleQuestion, 
-  MCQQuestion, 
-  Choice, 
-  Instruction 
+export type {
+  SpeakingTest,
+  TestSection,
+  QuestionSet,
+  Question,
+  SimpleQuestion,
+  MCQQuestion,
+  Choice,
+  Instruction,
 };
