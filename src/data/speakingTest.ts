@@ -205,8 +205,8 @@ export const speaking: SpeakingTest = {
     },
     {
       title: "Speaking Practice Task",
-      prepTime: 30,
-      recordingTime: 60,
+      prepTime: 5,
+      recordingTime: 5,
       questionSets: [
         {
           questions: [
@@ -222,8 +222,8 @@ export const speaking: SpeakingTest = {
     },
     {
       title: "Speaking Task 1: Giving Advice",
-      prepTime: 30,
-      recordingTime: 90,
+      prepTime: 5,
+      recordingTime: 5,
       questionSets: [
         {
           questions: [
@@ -240,8 +240,8 @@ export const speaking: SpeakingTest = {
     },
     {
       title: "Speaking Task 2: Talking about a Personal Experience",
-      prepTime: 30,
-      recordingTime: 60,
+      prepTime: 5,
+      recordingTime: 5,
       questionSets: [
         {
           questions: [
@@ -258,8 +258,8 @@ export const speaking: SpeakingTest = {
     },
     {
       title: "Speaking Task 3: Describing a Scene",
-      prepTime: 30,
-      recordingTime: 60,
+      prepTime: 5,
+      recordingTime: 5,
       description: classroom,
       questionSets: [
         {
@@ -277,8 +277,8 @@ export const speaking: SpeakingTest = {
     },
     {
       title: "Speaking Task 3: Describing a Scene",
-      prepTime: 30,
-      recordingTime: 60,
+      prepTime: 5,
+      recordingTime: 5,
       description: classroom,
       questionSets: [
         {
@@ -317,8 +317,8 @@ export const speaking: SpeakingTest = {
     },
     {
       title: "Practice Test A - Speaking Task 5: Comparing and Persuading",
-      prepTime: 60,
-      recordingTime: 60,
+      prepTime: 5,
+      recordingTime: 5,
       note: "This sample test is not recording your response.",
       questionSets: [
         {
@@ -355,8 +355,8 @@ export const speaking: SpeakingTest = {
     },
     {
       title: "Speaking Task 6: Dealing with a Difficult Situation",
-      prepTime: 60,
-      recordingTime: 60,
+      prepTime: 5,
+      recordingTime: 5,
       questionSets: [
         {
           instructions: [
@@ -384,8 +384,8 @@ export const speaking: SpeakingTest = {
     },
     {
       title: "Speaking Task 7: Expressing Opinions",
-      prepTime: 30,
-      recordingTime: 90,
+      prepTime: 5,
+      recordingTime: 5,
       questionSets: [
         {
           questions: [
@@ -402,8 +402,8 @@ export const speaking: SpeakingTest = {
     },
     {
       title: "Speaking Task 8: Describing an Unusual Situation",
-      prepTime: 30,
-      recordingTime: 60,
+      prepTime: 5,
+      recordingTime: 5,
       description: table,
       questionSets: [
         {

@@ -30,7 +30,6 @@ export default function Listening() {
     );
   }
 
-  
   const [timer, setTimer] = useState<number | undefined>(
     section.duration || undefined
   );
@@ -53,17 +52,16 @@ export default function Listening() {
 
   const location = useLocation();
   useEffect(() => {
-    if(section.questionSets  && section.questionSets  && section.questionSets[0].questions.length <= 1 && section.questionSets[0].questions[0].type === 'mcq'){
+    if (
+      section.questionSets &&
+      section.questionSets &&
+      section.questionSets[0].questions.length <= 1 &&
+      section.questionSets[0].questions[0].type === "mcq"
+    ) {
       setEnableNext(false);
     }
     setTimer(section.duration || undefined);
-
-    
   }, [location.pathname]);
-
-  
-
-
 
   const next = `/listening/${id + 1}`;
 
@@ -83,47 +81,71 @@ export default function Listening() {
             <InstructionHeader text={section.instructions[0].text!} />
           )}
         {section.instructions && section.instructions[0].video && (
-          <InstructionVideo description={section.description || undefined} videoSrc={section.instructions[0].video} />
+          <InstructionVideo
+            description={section.description || undefined}
+            videoSrc={section.instructions[0].video}
+          />
         )}
         {section.instructions && section.instructions.length > 1 && (
           <InstructionItem instructions={section.instructions.slice(1)} />
         )}
 
-        {section.prepTime && <Preparation info={section.description!} time={section.prepTime} next={next} />}
+        {section.prepTime && (
+          <Preparation
+            info={section.description!}
+            time={section.prepTime}
+            next={next}
+          />
+        )}
 
         {section.instructions && section.instructions[0].audio && (
           <>
             <div className="flex justify-evenly text-customLightBlue text-lg">
               <AudioSection
-                audioInfo={section.description || ''}
+                audioInfo={section.description || ""}
                 audioUrl={section.instructions[0].audio}
               />
             </div>
           </>
         )}
 
-        {section.questionSets  && section.questionSets[0].questions.length > 1 && (
-          <>
-            <QuestionnaireComponent
-              questions={section.questionSets[0].questions}
-              sectionTitle={section.title}
-            />
-          </>
-        )}
-        
-        {section.questionSets  && section.questionSets[0].questions[0].type === 'mcq' && section.questionSets  && section.questionSets[0].questions.length <= 1 && (
-          <>
-            <div className="flex justify-evenly text-customLightBlue text-lg">
-              <AudioSection
-                audioInfo={section.instructions && section.instructions[0]?.text || ''}
-                setEnableNext={setEnableNext}
-                audioUrl={section.questionSets[0].questions[0].text}
+        {section.questionSets &&
+          section.questionSets[0].questions.length > 1 && (
+            <>
+              <QuestionnaireComponent
+                questions={section.questionSets[0].questions}
+                sectionTitle={section.title}
               />
-              <QuestionSection audioSrc={section.questionSets[0].questions[0].text} title={section.title} question={section.questionSets[0].instructions && section.questionSets[0].instructions[0].text || ''} options={section.questionSets[0].questions[0].choices!} />
-            </div>
-          </>
-        )}
-        
+            </>
+          )}
+
+        {section.questionSets &&
+          section.questionSets[0].questions[0].type === "mcq" &&
+          section.questionSets &&
+          section.questionSets[0].questions.length <= 1 && (
+            <>
+              <div className="flex justify-evenly text-customLightBlue text-lg">
+                <AudioSection
+                  audioInfo={
+                    (section.instructions && section.instructions[0]?.text) ||
+                    ""
+                  }
+                  setEnableNext={setEnableNext}
+                  audioUrl={section.questionSets[0].questions[0].text}
+                />
+                <QuestionSection
+                  audioSrc={section.questionSets[0].questions[0].text}
+                  title={section.title}
+                  question={
+                    (section.questionSets[0].instructions &&
+                      section.questionSets[0].instructions[0].text) ||
+                    ""
+                  }
+                  options={section.questionSets[0].questions[0].choices!}
+                />
+              </div>
+            </>
+          )}
       </div>
     </CardLayout>
   );
